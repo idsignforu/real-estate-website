@@ -104,7 +104,7 @@ export const PropertiesPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-24 pb-16">
+    <div className="min-h-screen bg-gray-50 pt-[78px] sm:pt-[88px] pb-16">
       <SEOHead
         title={getPageTitle()}
         description="Filter and explore HMDA and DTCP approved open plots, luxury villas, and modern apartments across Hyderabad with clear title guarantees."

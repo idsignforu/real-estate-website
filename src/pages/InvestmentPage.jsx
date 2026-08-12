@@ -12,7 +12,7 @@ export const InvestmentPage = () => {
   const { openPopup } = usePopup();
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-24 pb-16">
+    <div className="min-h-screen bg-gray-50 pt-[78px] sm:pt-[88px] pb-16">
       <SEOHead
         title="Hyderabad Real Estate Investment Guide & Loan Calculator"
         description="Learn why Hyderabad is India's top real estate investment hub. High capital appreciation, HMDA layout growth, and housing loan EMI calculator."

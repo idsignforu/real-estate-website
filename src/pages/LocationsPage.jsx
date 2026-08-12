@@ -5,7 +5,7 @@ import { locationsData } from '@/data/locationsData';
 
 export const LocationsPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50 pt-24 pb-16">
+    <div className="min-h-screen bg-gray-50 pt-[78px] sm:pt-[88px] pb-16">
       <SEOHead
         title="Prime Real Estate Locations in Hyderabad | Kokapet, Tellapur, Kollur, Gachibowli"
         description="Explore top Hyderabad real estate investment hubs across Western, Southern and Suburban corridors including Kokapet, Narsingi, Tellapur, Kollur, Gachibowli & Financial District."

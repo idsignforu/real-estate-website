@@ -5,7 +5,7 @@ import { projectsData } from '@/data/projectsData';
 
 export const ProjectsPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50 pt-24 pb-16">
+    <div className="min-h-screen bg-gray-50 pt-[78px] sm:pt-[88px] pb-16">
       <SEOHead
         title="Gated Township Projects in Hyderabad | HMDA & DTCP Approved"
         description="Explore mega gated plot layouts and villa townships across Shankarpally, Adibatla, Tukkuguda and Kollur Hyderabad by iDesign4U Properties."

@@ -137,9 +137,9 @@ export const ProjectDetailPage = () => {
                 <Button variant="yellow" className="w-full font-bold" onClick={() => openPopup({ location: project.location })}>
                   Request Brochure &amp; Price List
                 </Button>
-                <a href={`tel:${contactConfig.rawPhone}`} className="block">
-                  <Button variant="outline" className="w-full text-blue-900 border-blue-900 font-semibold">
-                    <Phone className="h-4 w-4 mr-2" /> Call {contactConfig.phone}
+                <a href={contactConfig.telLink} className="block">
+                  <Button variant="outline" className="w-full text-blue-950 border-blue-950 hover:bg-blue-50 font-bold">
+                    <Phone className="h-4 w-4 mr-2 text-blue-900" /> Call Support
                   </Button>
                 </a>
               </div>

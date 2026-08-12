@@ -3,16 +3,17 @@ import { Slot } from "@radix-ui/react-slot";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = ({ variant = "default", size = "default", className = "" }) => {
-  const base = "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 shadow-sm cursor-pointer";
+  const base = "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 shadow-sm cursor-pointer";
   
   const variants = {
-    default: "bg-blue-900 text-white hover:bg-blue-800",
-    destructive: "bg-red-600 text-white hover:bg-red-700",
-    outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-    secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-    ghost: "hover:bg-accent hover:text-accent-foreground shadow-none",
-    link: "text-primary underline-offset-4 hover:underline shadow-none",
-    yellow: "bg-yellow-500 text-blue-950 font-semibold hover:bg-yellow-600",
+    default: "bg-blue-900 text-white hover:bg-blue-800 font-semibold",
+    destructive: "bg-red-600 text-white hover:bg-red-700 font-semibold",
+    outline: "border border-blue-950 bg-white text-blue-950 hover:bg-blue-50 font-bold",
+    outlineDark: "border-2 border-white bg-blue-900/70 text-white hover:bg-white hover:text-blue-950 font-bold",
+    secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 font-semibold",
+    ghost: "hover:bg-accent hover:text-accent-foreground shadow-none font-medium",
+    link: "text-primary underline-offset-4 hover:underline shadow-none font-medium",
+    yellow: "bg-yellow-500 text-blue-950 font-bold hover:bg-yellow-400",
   };
 
   const sizes = {

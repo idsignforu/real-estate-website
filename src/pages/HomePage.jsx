@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShieldCheck, TrendingUp, CheckCircle, ArrowRight, Building, Building2, Home, MapPin, Phone, Star } from 'lucide-react';
+import { ShieldCheck, CheckCircle, ArrowRight, Building, Building2, Home, MapPin, Phone, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { SEOHead } from '@/components/SEOHead';
@@ -23,15 +23,15 @@ export const HomePage = () => {
   const topLocations = locationsData.slice(0, 4);
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20">
+    <div className="min-h-screen bg-blue-950 pt-[78px] sm:pt-[88px]">
       <SEOHead
         title="HMDA & DTCP Approved Plots, Villas & Flats in Hyderabad"
         description="Invest in legally verified HMDA & DTCP approved open plots, villas and flats in Shankarpally, Adibatla, Kokapet, and Financial District Hyderabad with iDesign4U Properties."
       />
 
-      {/* Hero Section */}
+      {/* Hero Section - Starts IMMEDIATELY below Header/Ticker with 0 White Gap */}
       <section 
-        className="relative h-[85vh] min-h-[550px] max-h-[750px] bg-cover bg-center flex items-center justify-center"
+        className="relative h-[85vh] min-h-[520px] max-h-[750px] bg-cover bg-center flex items-center justify-center m-0 p-0"
         style={{
           backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.78)), url('https://images.unsplash.com/photo-1636970333550-2ce3aeda6754?crop=entropy&cs=srgb&fm=jpg&q=85')`
         }}
@@ -93,28 +93,30 @@ export const HomePage = () => {
       </section>
 
       {/* Featured Properties Section (Compact 2-col on mobile) */}
-      <section className="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-          <div>
-            <Badge variant="yellow" className="mb-2">Featured Listings</Badge>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-blue-950">
-              Verified Properties in Hyderabad
-            </h2>
-            <p className="text-sm sm:text-base text-gray-600 mt-1">
-              Explore handpicked open plots, villas, and apartments ready for investment
-            </p>
+      <section className="bg-gray-50 py-12 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+            <div>
+              <Badge variant="yellow" className="mb-2">Featured Listings</Badge>
+              <h2 className="text-2xl sm:text-4xl font-extrabold text-blue-950">
+                Verified Properties in Hyderabad
+              </h2>
+              <p className="text-sm sm:text-base text-gray-600 mt-1">
+                Explore handpicked open plots, villas, and apartments ready for investment
+              </p>
+            </div>
+            <Link to="/properties">
+              <Button variant="outline" className="text-blue-950 border-blue-950 hover:bg-blue-50 font-semibold text-xs sm:text-sm">
+                View All Properties ({propertiesData.length}) <ArrowRight className="h-4 w-4 ml-2" />
+              </Button>
+            </Link>
           </div>
-          <Link to="/properties">
-            <Button variant="outline" className="text-blue-950 border-blue-950 hover:bg-blue-50 font-semibold text-xs sm:text-sm">
-              View All Properties ({propertiesData.length}) <ArrowRight className="h-4 w-4 ml-2" />
-            </Button>
-          </Link>
-        </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
-          {featuredProperties.map((property) => (
-            <PropertyCard key={property.id} property={property} />
-          ))}
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
+            {featuredProperties.map((property) => (
+              <PropertyCard key={property.id} property={property} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -149,28 +151,30 @@ export const HomePage = () => {
       </section>
 
       {/* Featured Projects Section */}
-      <section className="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-          <div>
-            <Badge variant="outline" className="mb-2 text-blue-950 border-blue-950">Township Projects</Badge>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-blue-950">
-              Ongoing Mega Developments
-            </h2>
-            <p className="text-sm sm:text-base text-gray-600 mt-1">
-              Integrated plot layouts and gated villa communities across prime growth corridors
-            </p>
+      <section className="bg-gray-50 py-12 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+            <div>
+              <Badge variant="outline" className="mb-2 text-blue-950 border-blue-950">Township Projects</Badge>
+              <h2 className="text-2xl sm:text-4xl font-extrabold text-blue-950">
+                Ongoing Mega Developments
+              </h2>
+              <p className="text-sm sm:text-base text-gray-600 mt-1">
+                Integrated plot layouts and gated villa communities across prime growth corridors
+              </p>
+            </div>
+            <Link to="/projects">
+              <Button variant="outline" className="text-blue-950 border-blue-950 hover:bg-blue-50 font-semibold text-xs sm:text-sm">
+                Explore All Projects <ArrowRight className="h-4 w-4 ml-2" />
+              </Button>
+            </Link>
           </div>
-          <Link to="/projects">
-            <Button variant="outline" className="text-blue-950 border-blue-950 hover:bg-blue-50 font-semibold text-xs sm:text-sm">
-              Explore All Projects <ArrowRight className="h-4 w-4 ml-2" />
-            </Button>
-          </Link>
-        </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 sm:gap-6">
-          {featuredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 sm:gap-6">
+            {featuredProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -204,43 +208,45 @@ export const HomePage = () => {
       </section>
 
       {/* Investment & EMI Calculator Section */}
-      <section className="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          <div className="lg:col-span-5 space-y-6">
-            <Badge variant="yellow">Investment Insights</Badge>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-blue-950 leading-tight">
-              Why Invest in Hyderabad Real Estate Today?
-            </h2>
-            <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-              Hyderabad is recognized as India's top real estate investment market due to rapid infrastructure development, booming IT corridors, and strong capital returns.
-            </p>
+      <section className="bg-gray-50 py-12 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div className="lg:col-span-5 space-y-6">
+              <Badge variant="yellow">Investment Insights</Badge>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-blue-950 leading-tight">
+                Why Invest in Hyderabad Real Estate Today?
+              </h2>
+              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                Hyderabad is recognized as India's top real estate investment market due to rapid infrastructure development, booming IT corridors, and strong capital returns.
+              </p>
 
-            <div className="space-y-4 pt-2">
-              {whyInvestPointsData.slice(0, 3).map((pt) => (
-                <div key={pt.id} className="flex items-start space-x-3">
-                  <CheckCircle className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-sm font-bold text-gray-900">{pt.title}</h4>
-                    <p className="text-xs text-gray-600 mt-0.5">{pt.description}</p>
+              <div className="space-y-4 pt-2">
+                {whyInvestPointsData.slice(0, 3).map((pt) => (
+                  <div key={pt.id} className="flex items-start space-x-3">
+                    <CheckCircle className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="text-sm font-bold text-gray-900">{pt.title}</h4>
+                      <p className="text-xs text-gray-600 mt-0.5">{pt.description}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+
+              <div className="pt-2">
+                <Link to="/investment">
+                  <Button className="bg-blue-950 hover:bg-blue-900 text-white font-semibold">
+                    Read Investment Guide <ArrowRight className="h-4 w-4 ml-2" />
+                  </Button>
+                </Link>
+              </div>
             </div>
 
-            <div className="pt-2">
-              <Link to="/investment">
-                <Button className="bg-blue-950 hover:bg-blue-900 text-white font-semibold">
-                  Read Investment Guide <ArrowRight className="h-4 w-4 ml-2" />
-                </Button>
-              </Link>
+            <div className="lg:col-span-7">
+              <EMICalculator />
             </div>
-          </div>
 
-          <div className="lg:col-span-7">
-            <EMICalculator />
           </div>
-
         </div>
       </section>
 
@@ -292,9 +298,9 @@ export const HomePage = () => {
               <WhatsAppIcon className="h-5 w-5 mr-2 text-emerald-800" />
               Schedule Free Site Visit
             </Button>
-            <a href={contactConfig.telLink}>
-              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-blue-950 font-bold text-base px-8 w-full sm:w-auto">
-                <Phone className="h-4 w-4 mr-2" /> Call Support
+            <a href={contactConfig.telLink} className="w-full sm:w-auto">
+              <Button variant="outlineDark" size="lg" className="w-full sm:w-auto text-base px-8">
+                <Phone className="h-4 w-4 mr-2 text-yellow-400" /> Call Support
               </Button>
             </a>
           </div>

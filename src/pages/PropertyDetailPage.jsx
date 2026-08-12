@@ -156,8 +156,8 @@ export const PropertyDetailPage = () => {
                 </a>
 
                 <a href={contactConfig.telLink} className="block">
-                  <Button variant="outline" className="w-full border-white text-white hover:bg-white hover:text-blue-950 font-semibold">
-                    <Phone className="h-4 w-4 mr-2" /> Call for Assistance
+                  <Button variant="outlineDark" className="w-full">
+                    <Phone className="h-4 w-4 mr-2 text-yellow-400" /> Call for Assistance
                   </Button>
                 </a>
               </div>

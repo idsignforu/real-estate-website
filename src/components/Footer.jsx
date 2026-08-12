@@ -14,7 +14,7 @@ export const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <img
-                src="/PropertyForHappy-logo.png"
+                 src="/propertyforhappy-logo.png"
                 alt="Property For Happy logo mark"
                 className="h-12 w-auto object-contain shrink-0"
               />

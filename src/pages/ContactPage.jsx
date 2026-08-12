@@ -126,50 +126,50 @@ export const ContactPage = () => {
           </p>
         </div>
 
-        {/* Contact Cards (Icon-only controls, NO visible phone or email text) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-6 mb-12">
-          
-          <Card className="p-6 text-center border border-gray-200 shadow-sm bg-white hover:shadow-md transition-shadow flex flex-col justify-between items-center space-y-3">
+        {/* Contact Cards — always 3-col grid, compact on mobile */}
+        <div className="grid grid-cols-3 gap-2 sm:gap-6 mb-8 sm:mb-12">
+
+          <Card className="p-2.5 sm:p-6 text-center border border-gray-200 shadow-sm bg-white hover:shadow-md transition-shadow flex flex-col items-center gap-1.5 sm:gap-3">
             <a
               href={contactConfig.telLink}
-              className="bg-yellow-500 text-blue-950 p-4 rounded-2xl hover:scale-105 transition-transform shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              className="bg-yellow-500 text-blue-950 p-2 sm:p-4 rounded-xl sm:rounded-2xl hover:scale-105 transition-transform shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
               aria-label="Call iDesign4U Properties"
             >
-              <Phone className="h-7 w-7" />
+              <Phone className="h-4 w-4 sm:h-7 sm:w-7" />
             </a>
-            <div>
-              <h3 className="font-bold text-gray-900 text-base">Call Support</h3>
-              <p className="text-xs text-gray-500 mt-1">{contactConfig.workingHours}</p>
+            <div className="min-w-0 w-full">
+              <h3 className="font-bold text-gray-900 text-[11px] sm:text-base leading-tight">Call</h3>
+              <p className="hidden sm:block text-xs text-gray-500 mt-1">{contactConfig.workingHours}</p>
             </div>
           </Card>
 
-          <Card className="p-6 text-center border border-gray-200 shadow-sm bg-white hover:shadow-md transition-shadow flex flex-col justify-between items-center space-y-3">
+          <Card className="p-2.5 sm:p-6 text-center border border-gray-200 shadow-sm bg-white hover:shadow-md transition-shadow flex flex-col items-center gap-1.5 sm:gap-3">
             <a
               href={contactConfig.whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-emerald-600 text-white p-4 rounded-2xl hover:scale-105 transition-transform shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="bg-emerald-600 text-white p-2 sm:p-4 rounded-xl sm:rounded-2xl hover:scale-105 transition-transform shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
               aria-label="Chat on WhatsApp"
             >
-              <WhatsAppIcon className="h-7 w-7" />
+              <WhatsAppIcon className="h-4 w-4 sm:h-7 sm:w-7" />
             </a>
-            <div>
-              <h3 className="font-bold text-gray-900 text-base">WhatsApp Support</h3>
-              <p className="text-xs text-gray-500 mt-1">Instant Property Layouts &amp; Maps</p>
+            <div className="min-w-0 w-full">
+              <h3 className="font-bold text-gray-900 text-[11px] sm:text-base leading-tight">WhatsApp</h3>
+              <p className="hidden sm:block text-xs text-gray-500 mt-1">Instant Property Layouts &amp; Maps</p>
             </div>
           </Card>
 
-          <Card className="p-6 text-center border border-gray-200 shadow-sm bg-white hover:shadow-md transition-shadow flex flex-col justify-between items-center space-y-3">
+          <Card className="p-2.5 sm:p-6 text-center border border-gray-200 shadow-sm bg-white hover:shadow-md transition-shadow flex flex-col items-center gap-1.5 sm:gap-3">
             <a
               href={contactConfig.mailtoLink}
-              className="bg-blue-950 text-white p-4 rounded-2xl hover:scale-105 transition-transform shadow-md focus:outline-none focus:ring-2 focus:ring-blue-800"
+              className="bg-blue-950 text-white p-2 sm:p-4 rounded-xl sm:rounded-2xl hover:scale-105 transition-transform shadow-md focus:outline-none focus:ring-2 focus:ring-blue-800"
               aria-label="Email iDesign4U Properties"
             >
-              <Mail className="h-7 w-7" />
+              <Mail className="h-4 w-4 sm:h-7 sm:w-7" />
             </a>
-            <div>
-              <h3 className="font-bold text-gray-900 text-base">Email Enquiry</h3>
-              <p className="text-xs text-gray-500 mt-1">Legal Documents &amp; Assistance</p>
+            <div className="min-w-0 w-full">
+              <h3 className="font-bold text-gray-900 text-[11px] sm:text-base leading-tight">Email</h3>
+              <p className="hidden sm:block text-xs text-gray-500 mt-1">Legal Documents &amp; Assistance</p>
             </div>
           </Card>
 
@@ -179,11 +179,11 @@ export const ContactPage = () => {
         <div className="max-w-3xl mx-auto bg-white p-6 sm:p-10 rounded-2xl border border-gray-200 shadow-sm">
           
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid grid-cols-2 w-full mb-8">
-              <TabsTrigger value="enquiry" className="text-sm font-bold py-2.5">
+            <TabsList className="grid grid-cols-2 w-full mb-6">
+              <TabsTrigger value="enquiry" className="text-xs sm:text-sm font-bold py-2 sm:py-2.5 leading-tight">
                 General Property Enquiry
               </TabsTrigger>
-              <TabsTrigger value="sitevisit" className="text-sm font-bold py-2.5">
+              <TabsTrigger value="sitevisit" className="text-xs sm:text-sm font-bold py-2 sm:py-2.5 leading-tight">
                 Book Free Site Visit
               </TabsTrigger>
             </TabsList>

@@ -43,13 +43,17 @@ export const Header = () => {
 <Link
   to="/"
   onClick={closeMobileMenu}
-  className="flex items-center shrink-0 min-w-0"
+  className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0"
 >
   <img
     src="/propertyforhappy-logo.png"
-    alt="Property For Happy"
-    className="h-10 sm:h-12 w-auto max-w-[190px] sm:max-w-[220px] object-contain"
+    alt="Property For Happy logo"
+    className="h-9 sm:h-11 w-auto max-w-[52px] sm:max-w-[64px] object-contain shrink-0"
   />
+
+  <span className="text-white font-extrabold text-lg sm:text-xl leading-none tracking-tight whitespace-nowrap">
+    Property For Happy
+  </span>
 </Link>
 
         {/* Desktop Navigation Links */}

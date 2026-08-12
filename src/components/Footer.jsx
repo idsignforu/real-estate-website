@@ -10,18 +10,23 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           
-          {/* Brand Info with Logo */}
+          {/* Brand Column: Logo mark + Name + description */}
           <div className="space-y-4">
-            <div>
+            <div className="flex items-center gap-3">
               <img
                 src="/propertyforhappy-logo.png"
-                alt="PropertyForHappy"
-                className="h-14 w-auto object-contain invert brightness-200 opacity-90"
+                alt="PropertyForHappy logo mark"
+                className="h-12 w-auto object-contain shrink-0"
               />
+              <div>
+                <p className="text-xl font-extrabold text-white leading-tight tracking-tight">
+                  PropertyForHappy
+                </p>
+                <p className="text-xs text-yellow-400 font-semibold tracking-widest uppercase mt-0.5">
+                  {contactConfig.tagline}
+                </p>
+              </div>
             </div>
-            <p className="text-xs text-yellow-400 font-semibold tracking-widest uppercase mt-1">
-              {contactConfig.tagline}
-            </p>
             <p className="text-sm text-gray-300 leading-relaxed">
               {contactConfig.description}
             </p>

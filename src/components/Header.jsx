@@ -39,20 +39,28 @@ export const Header = () => {
       {/* Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
         
-        {/* Brand Logo */}
-        <Link to="/" onClick={closeMobileMenu} className="flex items-center shrink-0">
-          {/* Desktop logo — full size */}
+        {/* Brand Logo + Text */}
+        <Link to="/" onClick={closeMobileMenu} className="flex items-center gap-2 shrink-0 min-w-0">
+          {/* Logo mark — desktop */}
           <img
             src="/propertyforhappy-logo.png"
-            alt="PropertyForHappy"
-            className="hidden sm:block h-10 w-auto object-contain"
+            alt="PropertyForHappy logo mark"
+            className="hidden sm:block h-10 w-auto object-contain shrink-0"
           />
-          {/* Mobile logo — scaled down, max width controlled to leave room for icons */}
+          {/* Logo mark — mobile (smaller) */}
           <img
             src="/propertyforhappy-logo.png"
-            alt="PropertyForHappy"
-            className="sm:hidden h-8 w-auto max-w-[160px] object-contain"
+            alt="PropertyForHappy logo mark"
+            className="sm:hidden h-8 w-auto object-contain shrink-0"
           />
+          {/* Brand text — desktop */}
+          <span className="hidden sm:inline-block font-extrabold text-white text-xl leading-none tracking-tight whitespace-nowrap">
+            PropertyForHappy
+          </span>
+          {/* Brand text — mobile (compact) */}
+          <span className="sm:hidden font-extrabold text-white text-[15px] leading-none tracking-tight whitespace-nowrap">
+            PropertyForHappy
+          </span>
         </Link>
 
         {/* Desktop Navigation Links */}

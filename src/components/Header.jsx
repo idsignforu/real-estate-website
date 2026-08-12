@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
-  Building2, Phone, Mail, Menu, X, ChevronDown, 
-  Home, Building, MapPin, TrendingUp, Newspaper, Megaphone 
+  Building2, Phone, Menu, X, ChevronDown 
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon';
@@ -26,60 +25,26 @@ export const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40 bg-blue-950 text-white shadow-md border-b border-blue-900">
-      
-      {/* Top Utility Bar */}
-      <div className="bg-blue-900/90 text-xs py-1.5 px-4 sm:px-6 lg:px-8 border-b border-blue-800/50">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center space-x-2 text-yellow-400 font-semibold">
-            <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>HMDA &amp; DTCP Approved Properties in Hyderabad</span>
-          </div>
-
-          {/* Icon-only Contact Controls (NO visible phone/email text) */}
-          <div className="flex items-center space-x-3">
-            <a
-              href={contactConfig.whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-emerald-400 hover:text-emerald-300 transition-colors p-1 rounded focus:outline-none focus:ring-1 focus:ring-emerald-400"
-              aria-label="Chat on WhatsApp"
-            >
-              <WhatsAppIcon className="h-4 w-4" />
-            </a>
-
-            <a
-              href={contactConfig.telLink}
-              className="text-yellow-400 hover:text-yellow-300 transition-colors p-1 rounded focus:outline-none focus:ring-1 focus:ring-yellow-400"
-              aria-label="Call iDesign4U Properties"
-            >
-              <Phone className="h-4 w-4" />
-            </a>
-
-            <a
-              href={contactConfig.mailtoLink}
-              className="text-gray-300 hover:text-white transition-colors p-1 rounded focus:outline-none focus:ring-1 focus:ring-white"
-              aria-label="Email iDesign4U Properties"
-            >
-              <Mail className="h-4 w-4" />
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navigation Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      {/* Main Navigation Bar (First & Only Header Element) */}
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
         
         {/* Brand Logo */}
-        <Link to="/" onClick={closeMobileMenu} className="flex items-center space-x-2.5">
-          <div className="bg-yellow-500 text-blue-950 p-2 rounded-lg font-bold flex items-center justify-center">
-            <Building2 className="h-5 w-5" />
+        <Link to="/" onClick={closeMobileMenu} className="flex items-center space-x-2 shrink-0">
+          <div className="bg-yellow-500 text-blue-950 p-1.5 sm:p-2 rounded-lg font-bold flex items-center justify-center shrink-0">
+            <Building2 className="h-4 w-4 sm:h-5 sm:w-5" />
           </div>
           <div>
-            <span className="text-xl font-extrabold tracking-tight text-white block leading-none">
+            {/* Desktop Brand Title & Tagline */}
+            <span className="hidden sm:block text-xl font-extrabold tracking-tight text-white leading-none">
               {contactConfig.companyName}
             </span>
-            <span className="text-[10px] text-yellow-400 font-semibold uppercase tracking-wider block">
+            <span className="hidden sm:block text-[10px] text-yellow-400 font-semibold uppercase tracking-wider">
               {contactConfig.tagline}
+            </span>
+
+            {/* Mobile Brand Title (Short & Compact) */}
+            <span className="sm:hidden text-base font-extrabold tracking-tight text-white leading-none">
+              ID4U Properties
             </span>
           </div>
         </Link>
@@ -210,7 +175,7 @@ export const Header = () => {
           </Link>
         </nav>
 
-        {/* Action Button */}
+        {/* Desktop Action Button */}
         <div className="hidden lg:flex items-center space-x-3">
           <Button
             variant="yellow"
@@ -223,32 +188,32 @@ export const Header = () => {
           </Button>
         </div>
 
-        {/* Mobile Hamburger Button */}
-        <div className="lg:hidden flex items-center space-x-2">
+        {/* Mobile Action Controls */}
+        <div className="lg:hidden flex items-center space-x-1.5">
           <a
             href={contactConfig.whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-emerald-600 p-2 rounded-lg text-white"
+            className="bg-emerald-600 p-1.5 rounded-lg text-white"
             aria-label="Chat on WhatsApp"
           >
-            <WhatsAppIcon className="h-5 w-5" />
+            <WhatsAppIcon className="h-4 w-4" />
           </a>
 
           <a
             href={contactConfig.telLink}
-            className="bg-blue-900 p-2 rounded-lg text-yellow-400"
+            className="bg-blue-900 p-1.5 rounded-lg text-yellow-400"
             aria-label="Call iDesign4U Properties"
           >
-            <Phone className="h-5 w-5" />
+            <Phone className="h-4 w-4" />
           </a>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg bg-blue-900 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
-            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            className="p-1.5 rounded-lg bg-blue-900 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
 

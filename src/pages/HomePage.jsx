@@ -60,7 +60,7 @@ export const HomePage = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              className="w-full sm:w-auto border-2 border-white text-white hover:bg-white hover:text-blue-950 font-bold text-base px-8 py-3.5"
+              className="w-full sm:w-auto border-2 border-white bg-blue-900/60 hover:bg-white text-white hover:text-blue-950 font-bold text-base px-8 py-3.5 backdrop-blur-md transition-all"
               onClick={() => openPopup()}
             >
               <WhatsAppIcon className="h-5 w-5 mr-2 text-emerald-400" />

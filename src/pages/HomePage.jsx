@@ -126,23 +126,23 @@ export const HomePage = () => {
             <p className="text-sm text-gray-200">Find exactly what suits your budget and requirement</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <Link to="/properties/plots" className="bg-white/10 hover:bg-white/20 p-6 rounded-xl border border-white/20 transition-all text-center group">
-              <Building className="h-10 w-10 text-yellow-400 mx-auto mb-3 group-hover:scale-110 transition-transform" />
-              <h3 className="text-xl font-bold text-white mb-1">Open Plots</h3>
-              <p className="text-xs text-gray-300">HMDA &amp; DTCP Layouts</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-6">
+            <Link to="/properties/plots" className="bg-white/10 hover:bg-white/20 p-4 sm:p-6 rounded-xl border border-white/20 transition-all text-center group">
+              <Building className="h-8 w-8 sm:h-10 sm:w-10 text-yellow-400 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+              <h3 className="text-sm sm:text-xl font-bold text-white mb-0.5">Open Plots</h3>
+              <p className="text-[10px] sm:text-xs text-gray-300">HMDA &amp; DTCP Layouts</p>
             </Link>
 
-            <Link to="/properties/villas" className="bg-white/10 hover:bg-white/20 p-6 rounded-xl border border-white/20 transition-all text-center group">
-              <Home className="h-10 w-10 text-yellow-400 mx-auto mb-3 group-hover:scale-110 transition-transform" />
-              <h3 className="text-xl font-bold text-white mb-1">Villas</h3>
-              <p className="text-xs text-gray-300">Independent Luxury Homes</p>
+            <Link to="/properties/villas" className="bg-white/10 hover:bg-white/20 p-4 sm:p-6 rounded-xl border border-white/20 transition-all text-center group">
+              <Home className="h-8 w-8 sm:h-10 sm:w-10 text-yellow-400 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+              <h3 className="text-sm sm:text-xl font-bold text-white mb-0.5">Villas</h3>
+              <p className="text-[10px] sm:text-xs text-gray-300">Independent Homes</p>
             </Link>
 
-            <Link to="/properties/apartments" className="bg-white/10 hover:bg-white/20 p-6 rounded-xl border border-white/20 transition-all text-center group">
-              <Building2 className="h-10 w-10 text-yellow-400 mx-auto mb-3 group-hover:scale-110 transition-transform" />
-              <h3 className="text-xl font-bold text-white mb-1">Apartments</h3>
-              <p className="text-xs text-gray-300">2, 3 &amp; 4 BHK Gated Flats</p>
+            <Link to="/properties/apartments" className="bg-white/10 hover:bg-white/20 p-4 sm:p-6 rounded-xl border border-white/20 transition-all text-center group col-span-2 sm:col-span-1">
+              <Building2 className="h-8 w-8 sm:h-10 sm:w-10 text-yellow-400 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+              <h3 className="text-sm sm:text-xl font-bold text-white mb-0.5">Apartments</h3>
+              <p className="text-[10px] sm:text-xs text-gray-300">2, 3 &amp; 4 BHK Flats</p>
             </Link>
           </div>
         </div>
@@ -167,7 +167,7 @@ export const HomePage = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 sm:gap-6">
           {featuredProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}

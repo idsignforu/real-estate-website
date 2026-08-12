@@ -7,6 +7,8 @@ import { EnquiryPopup } from '@/components/EnquiryPopup';
 import { StickyButtons } from '@/components/StickyButtons';
 import { Toaster } from '@/components/ui/sonner';
 
+import { ScrollToTop } from '@/components/ScrollToTop';
+
 // Lazy loading route components for code splitting & performance optimization
 const HomePage = lazy(() => import('@/pages/HomePage').then(m => ({ default: m.HomePage })));
 const PropertiesPage = lazy(() => import('@/pages/PropertiesPage').then(m => ({ default: m.PropertiesPage })));
@@ -32,6 +34,7 @@ export function App() {
   return (
     <PopupProvider>
       <Router>
+        <ScrollToTop />
         <div className="flex flex-col min-h-screen font-sans selection:bg-yellow-400 selection:text-blue-950">
           <Header />
           <main className="flex-grow">

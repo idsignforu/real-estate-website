@@ -127,7 +127,7 @@ export const ContactPage = () => {
         </div>
 
         {/* Contact Cards (Icon-only controls, NO visible phone or email text) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-6 mb-12">
           
           <Card className="p-6 text-center border border-gray-200 shadow-sm bg-white hover:shadow-md transition-shadow flex flex-col justify-between items-center space-y-3">
             <a

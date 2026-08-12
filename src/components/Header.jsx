@@ -29,10 +29,10 @@ export const Header = () => {
       {/* Top Slim Scrolling DEMO Announcement Ticker */}
       <div className="bg-blue-900/40 backdrop-blur-sm border-b border-blue-800/40 text-yellow-300/90 text-[11px] font-medium py-1 overflow-hidden relative z-50 select-none">
         <div className="animate-demo-marquee flex shrink-0">
-          <span className="px-4">PropertyForHappy • Demo Real Estate Website • Sample Property Listings • Demo Enquiry &amp; WhatsApp Integration</span>
-          <span className="px-4">PropertyForHappy • Demo Real Estate Website • Sample Property Listings • Demo Enquiry &amp; WhatsApp Integration</span>
-          <span className="px-4">PropertyForHappy • Demo Real Estate Website • Sample Property Listings • Demo Enquiry &amp; WhatsApp Integration</span>
-          <span className="px-4">PropertyForHappy • Demo Real Estate Website • Sample Property Listings • Demo Enquiry &amp; WhatsApp Integration</span>
+          <span className="px-4">Property For Happy • Demo Real Estate Website • Sample Property Listings • Demo Enquiry &amp; WhatsApp Integration</span>
+          <span className="px-4">Property For Happy • Demo Real Estate Website • Sample Property Listings • Demo Enquiry &amp; WhatsApp Integration</span>
+          <span className="px-4">Property For Happy • Demo Real Estate Website • Sample Property Listings • Demo Enquiry &amp; WhatsApp Integration</span>
+          <span className="px-4">Property For Happy • Demo Real Estate Website • Sample Property Listings • Demo Enquiry &amp; WhatsApp Integration</span>
         </div>
       </div>
 
@@ -43,23 +43,23 @@ export const Header = () => {
         <Link to="/" onClick={closeMobileMenu} className="flex items-center gap-2 shrink-0 min-w-0">
           {/* Logo mark — desktop */}
           <img
-            src="/propertyforhappy-logo.png"
-            alt="PropertyForHappy logo mark"
+            src="/Property For Happy-logo.png"
+            alt="Property For Happy logo mark"
             className="hidden sm:block h-10 w-auto object-contain shrink-0"
           />
           {/* Logo mark — mobile (smaller) */}
           <img
-            src="/propertyforhappy-logo.png"
-            alt="PropertyForHappy logo mark"
+            src="/Property For Happy-logo.png"
+            alt="Property For Happy logo mark"
             className="sm:hidden h-8 w-auto object-contain shrink-0"
           />
           {/* Brand text — desktop */}
           <span className="hidden sm:inline-block font-extrabold text-white text-xl leading-none tracking-tight whitespace-nowrap">
-            PropertyForHappy
+            Property For Happy
           </span>
           {/* Brand text — mobile (compact) */}
           <span className="sm:hidden font-extrabold text-white text-[15px] leading-none tracking-tight whitespace-nowrap">
-            PropertyForHappy
+            Property For Happy
           </span>
         </Link>
 
@@ -217,7 +217,7 @@ export const Header = () => {
           <a
             href={contactConfig.telLink}
             className="bg-blue-900 p-1.5 rounded-lg text-yellow-400"
-            aria-label="Call PropertyForHappy"
+            aria-label="Call Property For Happy"
           >
             <Phone className="h-4 w-4" />
           </a>

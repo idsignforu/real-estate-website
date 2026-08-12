@@ -1,29 +1,30 @@
 import React from 'react';
-import { MessageCircle, PhoneCall } from 'lucide-react';
+import { Phone } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon';
 import { contactConfig } from '@/config/contactConfig';
 
 export const StickyButtons = () => {
   return (
     <div className="fixed bottom-6 right-6 flex flex-col space-y-3 z-30">
       
-      {/* WhatsApp Button */}
+      {/* Floating WhatsApp Button */}
       <a
-        href={`https://wa.me/${contactConfig.rawWhatsapp}?text=Hi%2C%20I%20am%20interested%20in%20HMDA%2FDTCP%20approved%20properties%20in%20Hyderabad.`}
+        href={contactConfig.whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-emerald-600 hover:bg-emerald-700 text-white p-3.5 sm:p-4 rounded-full shadow-xl transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+        className="bg-emerald-600 hover:bg-emerald-700 text-white p-3.5 sm:p-4 rounded-full shadow-2xl transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-emerald-500"
         aria-label="Chat on WhatsApp"
       >
-        <MessageCircle className="h-6 w-6" />
+        <WhatsAppIcon className="h-6 w-6" />
       </a>
 
-      {/* Phone Call Button */}
+      {/* Floating Phone Call Button */}
       <a
-        href={`tel:${contactConfig.rawPhone}`}
-        className="bg-blue-900 hover:bg-blue-800 text-white p-3.5 sm:p-4 rounded-full shadow-xl transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-800"
-        aria-label="Call Now"
+        href={contactConfig.telLink}
+        className="bg-blue-950 hover:bg-blue-900 text-yellow-400 p-3.5 sm:p-4 rounded-full shadow-2xl transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-800"
+        aria-label="Call iDesign4U Properties"
       >
-        <PhoneCall className="h-6 w-6" />
+        <Phone className="h-6 w-6" />
       </a>
 
     </div>

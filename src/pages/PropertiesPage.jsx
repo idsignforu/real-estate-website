@@ -13,7 +13,7 @@ import {
 } from '@/data/propertiesData';
 
 export const PropertiesPage = () => {
-  const { category } = useParams(); // 'apartments' | 'villas' | 'plots' | undefined
+  const { category } = useParams();
 
   const [filters, setFilters] = useState({
     propertyType: 'All',
@@ -26,7 +26,6 @@ export const PropertiesPage = () => {
 
   const [showMobileFilters, setShowMobileFilters] = useState(false);
 
-  // Sync category route param if present
   useEffect(() => {
     if (category) {
       if (category === 'apartments') setFilters(f => ({ ...f, propertyType: 'Apartment' }));
@@ -48,9 +47,8 @@ export const PropertiesPage = () => {
     });
   };
 
-  // FULL 6-CRITERIA FILTER ENGINE
+  // 6-CRITERIA FILTER ENGINE
   const filteredProperties = propertiesData.filter(property => {
-    // 1. Property Type Criteria
     if (filters.propertyType !== 'All') {
       if (filters.propertyType === 'Apartment') {
         if (!property.type.includes('BHK')) return false;
@@ -59,24 +57,20 @@ export const PropertiesPage = () => {
       }
     }
 
-    // 2. Location Criteria
     if (filters.location !== 'All' && property.location !== filters.location) {
       return false;
     }
 
-    // 3. Approval Criteria
     if (filters.approvalType !== 'All' && property.approval !== filters.approvalType) {
       return false;
     }
 
-    // 4. Facing Criteria
     if (filters.facing !== 'All' && property.facing !== filters.facing) {
       return false;
     }
 
-    // 5. Budget Criteria parsing
     if (filters.budgetRange !== 'All') {
-      const priceText = property.price; // e.g. "₹45 Lakhs" or "₹1.2 Crores"
+      const priceText = property.price;
       let numericLakhs = 0;
       if (priceText.includes('Crore')) {
         const num = parseFloat(priceText.replace(/[^0-9.]/g, ''));
@@ -92,7 +86,6 @@ export const PropertiesPage = () => {
       if (filters.budgetRange === 'Above ₹1 Crore' && numericLakhs <= 100) return false;
     }
 
-    // 6. Plot Size Criteria
     if (filters.plotSize !== 'All' && property.plotSize) {
       const numericSqYd = parseInt(property.plotSize.replace(/[^0-9]/g, ''), 10);
       if (filters.plotSize === 'Below 200 Sq. Yds' && numericSqYd >= 200) return false;
@@ -120,80 +113,80 @@ export const PropertiesPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Page Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-blue-950 mb-2">
+        <div className="mb-6">
+          <h1 className="text-2xl sm:text-4xl font-extrabold text-blue-950 mb-1">
             {getPageTitle()}
           </h1>
-          <p className="text-sm sm:text-base text-gray-600">
+          <p className="text-xs sm:text-base text-gray-600">
             Showing {filteredProperties.length} verified listings in Hyderabad
           </p>
 
           {/* Category Tabs */}
-          <div className="flex flex-wrap gap-2 mt-6">
+          <div className="flex flex-wrap gap-2 mt-4">
             <Link to="/properties">
-              <Button size="sm" variant={!category ? 'default' : 'outline'} className={!category ? 'bg-blue-900 text-white' : ''}>
+              <Button size="sm" variant={!category ? 'default' : 'outline'} className={!category ? 'bg-blue-950 text-white' : ''}>
                 All Properties
               </Button>
             </Link>
             <Link to="/properties/plots">
-              <Button size="sm" variant={category === 'plots' ? 'default' : 'outline'} className={category === 'plots' ? 'bg-blue-900 text-white' : ''}>
+              <Button size="sm" variant={category === 'plots' ? 'default' : 'outline'} className={category === 'plots' ? 'bg-blue-950 text-white' : ''}>
                 Open Plots
               </Button>
             </Link>
             <Link to="/properties/villas">
-              <Button size="sm" variant={category === 'villas' ? 'default' : 'outline'} className={category === 'villas' ? 'bg-blue-900 text-white' : ''}>
+              <Button size="sm" variant={category === 'villas' ? 'default' : 'outline'} className={category === 'villas' ? 'bg-blue-950 text-white' : ''}>
                 Villas
               </Button>
             </Link>
             <Link to="/properties/apartments">
-              <Button size="sm" variant={category === 'apartments' ? 'default' : 'outline'} className={category === 'apartments' ? 'bg-blue-900 text-white' : ''}>
+              <Button size="sm" variant={category === 'apartments' ? 'default' : 'outline'} className={category === 'apartments' ? 'bg-blue-950 text-white' : ''}>
                 Apartments
               </Button>
             </Link>
           </div>
         </div>
 
-        {/* Mobile Filter Toggle */}
-        <div className="mb-6 lg:hidden">
+        {/* Mobile Filter Toggle Button */}
+        <div className="mb-4 lg:hidden">
           <Button
             onClick={() => setShowMobileFilters(!showMobileFilters)}
             variant="outline"
-            className="w-full text-blue-900 border-blue-900 font-semibold"
+            className="w-full text-blue-950 border-blue-950 font-bold text-xs py-2"
           >
             <Filter className="h-4 w-4 mr-2" />
             {showMobileFilters ? 'Hide Filters' : 'Show 6-Criteria Filters'}
           </Button>
         </div>
 
-        {/* Layout Grid */}
-        <div className="flex flex-col lg:flex-row gap-8">
+        {/* Main Grid Layout */}
+        <div className="flex flex-col lg:flex-row gap-6">
           
           {/* Sidebar Filter Panel */}
-          <aside className={`lg:w-80 shrink-0 ${showMobileFilters ? 'block' : 'hidden lg:block'}`}>
-            <Card className="sticky top-24 border border-gray-200 shadow-sm">
-              <CardContent className="p-6 space-y-5">
-                <div className="flex justify-between items-center border-b pb-3">
-                  <h3 className="font-bold text-blue-950 flex items-center text-base">
-                    <Filter className="h-4 w-4 mr-2 text-blue-900" /> Filter Criteria
+          <aside className={`lg:w-72 shrink-0 ${showMobileFilters ? 'block' : 'hidden lg:block'}`}>
+            <Card className="sticky top-24 border border-gray-200 shadow-sm bg-white">
+              <CardContent className="p-4 sm:p-5 space-y-4">
+                <div className="flex justify-between items-center border-b pb-2.5">
+                  <h3 className="font-bold text-blue-950 flex items-center text-sm">
+                    <Filter className="h-4 w-4 mr-1.5 text-blue-900" /> Filter Criteria
                   </h3>
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={handleResetFilters}
-                    className="text-xs text-gray-500 hover:text-blue-900 h-auto p-1"
+                    className="text-xs text-gray-500 hover:text-blue-950 h-auto p-1"
                   >
                     <RotateCcw className="h-3 w-3 mr-1" /> Reset
                   </Button>
                 </div>
 
                 {/* 1. Property Type */}
-                <div className="space-y-1.5">
+                <div className="space-y-1">
                   <Label className="text-xs font-semibold text-gray-700">Property Type</Label>
                   <Select
                     value={filters.propertyType}
                     onValueChange={(val) => setFilters({ ...filters, propertyType: val })}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="h-9 text-xs">
                       <SelectValue placeholder="All Types" />
                     </SelectTrigger>
                     <SelectContent>
@@ -205,13 +198,13 @@ export const PropertiesPage = () => {
                 </div>
 
                 {/* 2. Location */}
-                <div className="space-y-1.5">
+                <div className="space-y-1">
                   <Label className="text-xs font-semibold text-gray-700">Location</Label>
                   <Select
                     value={filters.location}
                     onValueChange={(val) => setFilters({ ...filters, location: val })}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="h-9 text-xs">
                       <SelectValue placeholder="All Locations" />
                     </SelectTrigger>
                     <SelectContent>
@@ -223,13 +216,13 @@ export const PropertiesPage = () => {
                 </div>
 
                 {/* 3. Budget */}
-                <div className="space-y-1.5">
+                <div className="space-y-1">
                   <Label className="text-xs font-semibold text-gray-700">Budget Range</Label>
                   <Select
                     value={filters.budgetRange}
                     onValueChange={(val) => setFilters({ ...filters, budgetRange: val })}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="h-9 text-xs">
                       <SelectValue placeholder="All Budgets" />
                     </SelectTrigger>
                     <SelectContent>
@@ -241,13 +234,13 @@ export const PropertiesPage = () => {
                 </div>
 
                 {/* 4. Approval Type */}
-                <div className="space-y-1.5">
+                <div className="space-y-1">
                   <Label className="text-xs font-semibold text-gray-700">Approval Type</Label>
                   <Select
                     value={filters.approvalType}
                     onValueChange={(val) => setFilters({ ...filters, approvalType: val })}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="h-9 text-xs">
                       <SelectValue placeholder="All Approvals" />
                     </SelectTrigger>
                     <SelectContent>
@@ -259,13 +252,13 @@ export const PropertiesPage = () => {
                 </div>
 
                 {/* 5. Plot Size */}
-                <div className="space-y-1.5">
+                <div className="space-y-1">
                   <Label className="text-xs font-semibold text-gray-700">Plot Size</Label>
                   <Select
                     value={filters.plotSize}
                     onValueChange={(val) => setFilters({ ...filters, plotSize: val })}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="h-9 text-xs">
                       <SelectValue placeholder="All Sizes" />
                     </SelectTrigger>
                     <SelectContent>
@@ -277,13 +270,13 @@ export const PropertiesPage = () => {
                 </div>
 
                 {/* 6. Facing */}
-                <div className="space-y-1.5">
+                <div className="space-y-1">
                   <Label className="text-xs font-semibold text-gray-700">Facing Direction</Label>
                   <Select
                     value={filters.facing}
                     onValueChange={(val) => setFilters({ ...filters, facing: val })}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="h-9 text-xs">
                       <SelectValue placeholder="All Facings" />
                     </SelectTrigger>
                     <SelectContent>
@@ -298,22 +291,22 @@ export const PropertiesPage = () => {
             </Card>
           </aside>
 
-          {/* Properties Grid Area */}
+          {/* Compact 2-column Grid on Mobile, 3-column on Desktop */}
           <main className="flex-1">
             {filteredProperties.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-6">
                 {filteredProperties.map((property) => (
                   <PropertyCard key={property.id} property={property} />
                 ))}
               </div>
             ) : (
-              <div className="bg-white p-12 rounded-xl text-center border border-gray-200 space-y-4">
-                <Building2 className="h-12 w-12 text-gray-400 mx-auto" />
-                <h3 className="text-xl font-bold text-gray-800">No Properties Found Matching Your Criteria</h3>
-                <p className="text-sm text-gray-500 max-w-md mx-auto">
-                  Try adjusting or resetting your filter criteria to view more available properties in Hyderabad.
+              <div className="bg-white p-8 rounded-xl text-center border border-gray-200 space-y-3">
+                <Building2 className="h-10 w-10 text-gray-400 mx-auto" />
+                <h3 className="text-lg font-bold text-gray-800">No Properties Found Matching Filter Criteria</h3>
+                <p className="text-xs text-gray-500 max-w-md mx-auto">
+                  Try adjusting or resetting your filter criteria to view available properties.
                 </p>
-                <Button onClick={handleResetFilters} variant="outline" className="text-blue-900 border-blue-900">
+                <Button onClick={handleResetFilters} variant="outline" className="text-blue-950 border-blue-950 text-xs">
                   Reset All Filters
                 </Button>
               </div>

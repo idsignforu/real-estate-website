@@ -1,358 +1,355 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
-  Building2, Phone, Menu, X, ChevronDown, 
-  Home, Compass, MapPin, TrendingUp, BookOpen, Megaphone, PhoneCall 
+  Building2, Phone, Mail, Menu, X, ChevronDown, 
+  Home, Building, MapPin, TrendingUp, Newspaper, Megaphone 
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon';
 import { contactConfig } from '@/config/contactConfig';
 import { usePopup } from '@/context/PopupContext';
-import { projectsData } from '@/data/projectsData';
 
 export const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openAccordion, setOpenAccordion] = useState(null);
-  const [activeDropdown, setActiveDropdown] = useState(null);
-  const location = useLocation();
   const { openPopup } = usePopup();
-
-  const isActive = (path) => location.pathname === path;
-  const isParentActive = (basePath) => location.pathname.startsWith(basePath);
-
-  // Close menus when route changes
-  useEffect(() => {
-    setIsMenuOpen(false);
-    setActiveDropdown(null);
-    setOpenAccordion(null);
-  }, [location.pathname]);
+  const location = useLocation();
 
   const toggleAccordion = (name) => {
     setOpenAccordion(openAccordion === name ? null : name);
   };
 
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+    setOpenAccordion(null);
+  };
+
   return (
-    <header className="fixed top-0 left-0 right-0 w-full bg-white shadow-sm z-40 border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          
-          {/* Brand Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="bg-blue-900 p-2 rounded-lg group-hover:bg-blue-800 transition-colors">
-              <Building2 className="h-7 w-7 text-yellow-500" />
-            </div>
-            <div>
-              <h1 className="text-xl sm:text-2xl font-bold text-blue-900 leading-tight">
-                {contactConfig.companyName}
-              </h1>
-              <p className="text-[11px] sm:text-xs text-gray-600 font-medium">
-                {contactConfig.tagline}
-              </p>
-            </div>
-          </Link>
-
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-6">
-            
-            {/* Home */}
-            <Link
-              to="/"
-              className={`text-sm font-medium transition-colors hover:text-blue-900 ${
-                isActive('/') ? 'text-blue-900 font-semibold' : 'text-gray-700'
-              }`}
-            >
-              Home
-            </Link>
-
-            {/* Buy Properties Dropdown */}
-            <div 
-              className="relative group py-6"
-              onMouseEnter={() => setActiveDropdown('properties')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button 
-                className={`flex items-center text-sm font-medium transition-colors hover:text-blue-900 cursor-pointer ${
-                  isParentActive('/properties') ? 'text-blue-900 font-semibold' : 'text-gray-700'
-                }`}
-                aria-expanded={activeDropdown === 'properties'}
-              >
-                Buy Properties
-                <ChevronDown className="h-4 w-4 ml-1 transition-transform group-hover:rotate-180" />
-              </button>
-
-              <div className="absolute top-full left-0 w-56 bg-white border border-gray-100 shadow-xl rounded-lg py-2 hidden group-hover:block animate-in fade-in-50 slide-in-from-top-2 duration-150">
-                <Link
-                  to="/properties"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 font-semibold border-b border-gray-100"
-                >
-                  All Properties
-                </Link>
-                <Link
-                  to="/properties/apartments"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900"
-                >
-                  Apartments
-                </Link>
-                <Link
-                  to="/properties/villas"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900"
-                >
-                  Villas
-                </Link>
-                <Link
-                  to="/properties/plots"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900"
-                >
-                  Open Plots
-                </Link>
-              </div>
-            </div>
-
-            {/* Projects Dropdown */}
-            <div 
-              className="relative group py-6"
-              onMouseEnter={() => setActiveDropdown('projects')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button 
-                className={`flex items-center text-sm font-medium transition-colors hover:text-blue-900 cursor-pointer ${
-                  isParentActive('/projects') ? 'text-blue-900 font-semibold' : 'text-gray-700'
-                }`}
-                aria-expanded={activeDropdown === 'projects'}
-              >
-                Projects
-                <ChevronDown className="h-4 w-4 ml-1 transition-transform group-hover:rotate-180" />
-              </button>
-
-              <div className="absolute top-full left-0 w-64 bg-white border border-gray-100 shadow-xl rounded-lg py-2 hidden group-hover:block animate-in fade-in-50 slide-in-from-top-2 duration-150">
-                <Link
-                  to="/projects"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 font-semibold border-b border-gray-100"
-                >
-                  View All Townships
-                </Link>
-                {projectsData.map((proj) => (
-                  <Link
-                    key={proj.id}
-                    to={`/projects/${proj.slug}`}
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900"
-                  >
-                    <span className="font-medium block">{proj.name}</span>
-                    <span className="text-[11px] text-gray-500 block">{proj.location} • {proj.approval}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Locations Dropdown */}
-            <div 
-              className="relative group py-6"
-              onMouseEnter={() => setActiveDropdown('locations')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button 
-                className={`flex items-center text-sm font-medium transition-colors hover:text-blue-900 cursor-pointer ${
-                  isParentActive('/locations') ? 'text-blue-900 font-semibold' : 'text-gray-700'
-                }`}
-                aria-expanded={activeDropdown === 'locations'}
-              >
-                Locations
-                <ChevronDown className="h-4 w-4 ml-1 transition-transform group-hover:rotate-180" />
-              </button>
-
-              <div className="absolute top-full left-0 w-60 bg-white border border-gray-100 shadow-xl rounded-lg py-2 hidden group-hover:block animate-in fade-in-50 slide-in-from-top-2 duration-150">
-                <Link
-                  to="/locations"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 font-semibold border-b border-gray-100"
-                >
-                  All Hyderabad Locations
-                </Link>
-                <div className="grid grid-cols-1 gap-1 py-1">
-                  <Link to="/locations/kokapet" className="px-4 py-1.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900">Kokapet</Link>
-                  <Link to="/locations/narsingi" className="px-4 py-1.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900">Narsingi</Link>
-                  <Link to="/locations/tellapur" className="px-4 py-1.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900">Tellapur</Link>
-                  <Link to="/locations/kollur" className="px-4 py-1.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900">Kollur</Link>
-                  <Link to="/locations/gachibowli" className="px-4 py-1.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900">Gachibowli</Link>
-                  <Link to="/locations/financial-district" className="px-4 py-1.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900">Financial District</Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Investment */}
-            <Link
-              to="/investment"
-              className={`text-sm font-medium transition-colors hover:text-blue-900 ${
-                isActive('/investment') || isActive('/why-invest') ? 'text-blue-900 font-semibold' : 'text-gray-700'
-              }`}
-            >
-              Investment
-            </Link>
-
-            {/* Blog */}
-            <Link
-              to="/blog"
-              className={`text-sm font-medium transition-colors hover:text-blue-900 ${
-                isParentActive('/blog') ? 'text-blue-900 font-semibold' : 'text-gray-700'
-              }`}
-            >
-              Blog
-            </Link>
-
-            {/* Advertise */}
-            <Link
-              to="/advertise"
-              className={`text-sm font-medium transition-colors hover:text-blue-900 ${
-                isActive('/advertise') ? 'text-blue-900 font-semibold' : 'text-gray-700'
-              }`}
-            >
-              Advertise With Us
-            </Link>
-
-            {/* Contact */}
-            <Link
-              to="/contact"
-              className={`text-sm font-medium transition-colors hover:text-blue-900 ${
-                isActive('/contact') ? 'text-blue-900 font-semibold' : 'text-gray-700'
-              }`}
-            >
-              Contact
-            </Link>
-          </nav>
-
-          {/* Action CTAs */}
-          <div className="hidden sm:flex items-center space-x-3">
-            <a href={`tel:${contactConfig.rawPhone}`}>
-              <Button size="sm" className="bg-blue-900 hover:bg-blue-800 text-white font-medium">
-                <Phone className="h-3.5 w-3.5 mr-1.5" />
-                Call Now
-              </Button>
-            </a>
-            <Button 
-              size="sm" 
-              variant="yellow"
-              onClick={() => openPopup()}
-            >
-              Enquire
-            </Button>
+    <header className="fixed top-0 left-0 right-0 z-40 bg-blue-950 text-white shadow-md border-b border-blue-900">
+      
+      {/* Top Utility Bar */}
+      <div className="bg-blue-900/90 text-xs py-1.5 px-4 sm:px-6 lg:px-8 border-b border-blue-800/50">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <div className="flex items-center space-x-2 text-yellow-400 font-semibold">
+            <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>HMDA &amp; DTCP Approved Properties in Hyderabad</span>
           </div>
 
-          {/* Mobile Menu Toggle Button */}
-          <button
-            className="lg:hidden p-2 text-gray-700 hover:text-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-900 rounded-md"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle Navigation Menu"
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-navigation"
-          >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          {/* Icon-only Contact Controls (NO visible phone/email text) */}
+          <div className="flex items-center space-x-3">
+            <a
+              href={contactConfig.whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-emerald-400 hover:text-emerald-300 transition-colors p-1 rounded focus:outline-none focus:ring-1 focus:ring-emerald-400"
+              aria-label="Chat on WhatsApp"
+            >
+              <WhatsAppIcon className="h-4 w-4" />
+            </a>
+
+            <a
+              href={contactConfig.telLink}
+              className="text-yellow-400 hover:text-yellow-300 transition-colors p-1 rounded focus:outline-none focus:ring-1 focus:ring-yellow-400"
+              aria-label="Call iDesign4U Properties"
+            >
+              <Phone className="h-4 w-4" />
+            </a>
+
+            <a
+              href={contactConfig.mailtoLink}
+              className="text-gray-300 hover:text-white transition-colors p-1 rounded focus:outline-none focus:ring-1 focus:ring-white"
+              aria-label="Email iDesign4U Properties"
+            >
+              <Mail className="h-4 w-4" />
+            </a>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Drawer Navigation */}
-      {isMenuOpen && (
-        <nav 
-          id="mobile-navigation"
-          className="lg:hidden bg-white border-t border-gray-200 px-4 pt-3 pb-6 space-y-2 max-h-[calc(100vh-5rem)] overflow-y-auto shadow-2xl"
-        >
-          <Link
-            to="/"
-            className="block py-2 text-base font-semibold text-gray-800 hover:text-blue-900 border-b border-gray-100"
-            onClick={() => setIsMenuOpen(false)}
+      {/* Main Navigation Bar */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        
+        {/* Brand Logo */}
+        <Link to="/" onClick={closeMobileMenu} className="flex items-center space-x-2.5">
+          <div className="bg-yellow-500 text-blue-950 p-2 rounded-lg font-bold flex items-center justify-center">
+            <Building2 className="h-5 w-5" />
+          </div>
+          <div>
+            <span className="text-xl font-extrabold tracking-tight text-white block leading-none">
+              {contactConfig.companyName}
+            </span>
+            <span className="text-[10px] text-yellow-400 font-semibold uppercase tracking-wider block">
+              {contactConfig.tagline}
+            </span>
+          </div>
+        </Link>
+
+        {/* Desktop Navigation Links */}
+        <nav className="hidden lg:flex items-center space-x-1 text-sm font-semibold">
+          
+          <Link 
+            to="/" 
+            className={`px-3 py-2 rounded-md transition-colors ${
+              location.pathname === '/' ? 'text-yellow-400 bg-blue-900/60' : 'text-gray-200 hover:text-white hover:bg-blue-900/40'
+            }`}
           >
             Home
           </Link>
 
-          {/* Accordion: Buy Properties */}
-          <div className="border-b border-gray-100 py-1">
-            <button
-              className="flex justify-between items-center w-full py-2 text-base font-semibold text-gray-800 hover:text-blue-900 text-left"
-              onClick={() => toggleAccordion('properties')}
-              aria-expanded={openAccordion === 'properties'}
+          {/* Buy Properties Dropdown */}
+          <div className="relative group">
+            <Link
+              to="/properties"
+              className={`px-3 py-2 rounded-md inline-flex items-center transition-colors ${
+                location.pathname.startsWith('/properties') ? 'text-yellow-400 bg-blue-900/60' : 'text-gray-200 hover:text-white hover:bg-blue-900/40'
+              }`}
             >
-              <span>Buy Properties</span>
-              <ChevronDown className={`h-4 w-4 transition-transform ${openAccordion === 'properties' ? 'rotate-180' : ''}`} />
-            </button>
-            {openAccordion === 'properties' && (
-              <div className="pl-4 space-y-2 py-2 bg-gray-50 rounded-md my-1">
-                <Link to="/properties" className="block text-sm text-gray-700 hover:text-blue-900 font-medium" onClick={() => setIsMenuOpen(false)}>All Properties</Link>
-                <Link to="/properties/apartments" className="block text-sm text-gray-600 hover:text-blue-900" onClick={() => setIsMenuOpen(false)}>Apartments</Link>
-                <Link to="/properties/villas" className="block text-sm text-gray-600 hover:text-blue-900" onClick={() => setIsMenuOpen(false)}>Villas</Link>
-                <Link to="/properties/plots" className="block text-sm text-gray-600 hover:text-blue-900" onClick={() => setIsMenuOpen(false)}>Open Plots</Link>
-              </div>
-            )}
+              Buy Properties <ChevronDown className="h-4 w-4 ml-1" />
+            </Link>
+
+            <div className="absolute left-0 top-full hidden group-hover:block w-56 bg-white text-gray-900 rounded-xl shadow-xl border border-gray-200 py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+              <Link to="/properties/plots" className="block px-4 py-2.5 hover:bg-blue-50 hover:text-blue-950 text-sm font-medium">
+                Open Plots (HMDA/DTCP)
+              </Link>
+              <Link to="/properties/villas" className="block px-4 py-2.5 hover:bg-blue-50 hover:text-blue-950 text-sm font-medium">
+                Luxury Gated Villas
+              </Link>
+              <Link to="/properties/apartments" className="block px-4 py-2.5 hover:bg-blue-50 hover:text-blue-950 text-sm font-medium">
+                2, 3 &amp; 4 BHK Apartments
+              </Link>
+              <div className="border-t border-gray-100 my-1"></div>
+              <Link to="/properties" className="block px-4 py-2 hover:bg-blue-50 text-blue-900 font-bold text-xs">
+                View All Properties →
+              </Link>
+            </div>
           </div>
 
-          {/* Accordion: Projects */}
-          <div className="border-b border-gray-100 py-1">
-            <button
-              className="flex justify-between items-center w-full py-2 text-base font-semibold text-gray-800 hover:text-blue-900 text-left"
-              onClick={() => toggleAccordion('projects')}
-              aria-expanded={openAccordion === 'projects'}
+          {/* Projects Dropdown */}
+          <div className="relative group">
+            <Link
+              to="/projects"
+              className={`px-3 py-2 rounded-md inline-flex items-center transition-colors ${
+                location.pathname.startsWith('/projects') ? 'text-yellow-400 bg-blue-900/60' : 'text-gray-200 hover:text-white hover:bg-blue-900/40'
+              }`}
             >
-              <span>Projects</span>
-              <ChevronDown className={`h-4 w-4 transition-transform ${openAccordion === 'projects' ? 'rotate-180' : ''}`} />
-            </button>
-            {openAccordion === 'projects' && (
-              <div className="pl-4 space-y-2 py-2 bg-gray-50 rounded-md my-1">
-                <Link to="/projects" className="block text-sm text-gray-700 hover:text-blue-900 font-medium" onClick={() => setIsMenuOpen(false)}>All Townships</Link>
-                {projectsData.map(proj => (
-                  <Link key={proj.id} to={`/projects/${proj.slug}`} className="block text-sm text-gray-600 hover:text-blue-900" onClick={() => setIsMenuOpen(false)}>
-                    {proj.name}
-                  </Link>
-                ))}
-              </div>
-            )}
+              Township Projects <ChevronDown className="h-4 w-4 ml-1" />
+            </Link>
+
+            <div className="absolute left-0 top-full hidden group-hover:block w-64 bg-white text-gray-900 rounded-xl shadow-xl border border-gray-200 py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+              <Link to="/projects/a1-green-valley" className="block px-4 py-2.5 hover:bg-blue-50 hover:text-blue-950 text-sm font-medium">
+                A1 Green Valley (Shankarpally)
+              </Link>
+              <Link to="/projects/a1-royal-enclave" className="block px-4 py-2.5 hover:bg-blue-50 hover:text-blue-950 text-sm font-medium">
+                A1 Royal Enclave (Adibatla)
+              </Link>
+              <Link to="/projects/a1-sunrise-heights" className="block px-4 py-2.5 hover:bg-blue-50 hover:text-blue-950 text-sm font-medium">
+                A1 Sunrise Heights (Kollur)
+              </Link>
+              <div className="border-t border-gray-100 my-1"></div>
+              <Link to="/projects" className="block px-4 py-2 hover:bg-blue-50 text-blue-900 font-bold text-xs">
+                Explore All Projects →
+              </Link>
+            </div>
           </div>
 
-          {/* Accordion: Locations */}
-          <div className="border-b border-gray-100 py-1">
-            <button
-              className="flex justify-between items-center w-full py-2 text-base font-semibold text-gray-800 hover:text-blue-900 text-left"
-              onClick={() => toggleAccordion('locations')}
-              aria-expanded={openAccordion === 'locations'}
+          {/* Locations Dropdown */}
+          <div className="relative group">
+            <Link
+              to="/locations"
+              className={`px-3 py-2 rounded-md inline-flex items-center transition-colors ${
+                location.pathname.startsWith('/locations') ? 'text-yellow-400 bg-blue-900/60' : 'text-gray-200 hover:text-white hover:bg-blue-900/40'
+              }`}
             >
-              <span>Locations</span>
-              <ChevronDown className={`h-4 w-4 transition-transform ${openAccordion === 'locations' ? 'rotate-180' : ''}`} />
-            </button>
-            {openAccordion === 'locations' && (
-              <div className="pl-4 space-y-2 py-2 bg-gray-50 rounded-md my-1">
-                <Link to="/locations" className="block text-sm text-gray-700 hover:text-blue-900 font-medium" onClick={() => setIsMenuOpen(false)}>All Locations</Link>
-                <Link to="/locations/kokapet" className="block text-sm text-gray-600 hover:text-blue-900" onClick={() => setIsMenuOpen(false)}>Kokapet</Link>
-                <Link to="/locations/narsingi" className="block text-sm text-gray-600 hover:text-blue-900" onClick={() => setIsMenuOpen(false)}>Narsingi</Link>
-                <Link to="/locations/tellapur" className="block text-sm text-gray-600 hover:text-blue-900" onClick={() => setIsMenuOpen(false)}>Tellapur</Link>
-                <Link to="/locations/kollur" className="block text-sm text-gray-600 hover:text-blue-900" onClick={() => setIsMenuOpen(false)}>Kollur</Link>
-                <Link to="/locations/gachibowli" className="block text-sm text-gray-600 hover:text-blue-900" onClick={() => setIsMenuOpen(false)}>Gachibowli</Link>
-                <Link to="/locations/financial-district" className="block text-sm text-gray-600 hover:text-blue-900" onClick={() => setIsMenuOpen(false)}>Financial District</Link>
-              </div>
-            )}
+              Locations <ChevronDown className="h-4 w-4 ml-1" />
+            </Link>
+
+            <div className="absolute left-0 top-full hidden group-hover:block w-56 bg-white text-gray-900 rounded-xl shadow-xl border border-gray-200 py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+              <Link to="/locations/kokapet" className="block px-4 py-2 hover:bg-blue-50 text-sm">Kokapet</Link>
+              <Link to="/locations/narsingi" className="block px-4 py-2 hover:bg-blue-50 text-sm">Narsingi</Link>
+              <Link to="/locations/tellapur" className="block px-4 py-2 hover:bg-blue-50 text-sm">Tellapur</Link>
+              <Link to="/locations/kollur" className="block px-4 py-2 hover:bg-blue-50 text-sm">Kollur</Link>
+              <Link to="/locations/gachibowli" className="block px-4 py-2 hover:bg-blue-50 text-sm">Gachibowli</Link>
+              <Link to="/locations/financial-district" className="block px-4 py-2 hover:bg-blue-50 text-sm">Financial District</Link>
+            </div>
           </div>
 
-          <Link to="/investment" className="block py-2 text-base font-semibold text-gray-800 hover:text-blue-900 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
+          <Link 
+            to="/investment" 
+            className={`px-3 py-2 rounded-md transition-colors ${
+              location.pathname === '/investment' ? 'text-yellow-400 bg-blue-900/60' : 'text-gray-200 hover:text-white hover:bg-blue-900/40'
+            }`}
+          >
             Investment
           </Link>
-          <Link to="/blog" className="block py-2 text-base font-semibold text-gray-800 hover:text-blue-900 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
+
+          <Link 
+            to="/blog" 
+            className={`px-3 py-2 rounded-md transition-colors ${
+              location.pathname.startsWith('/blog') ? 'text-yellow-400 bg-blue-900/60' : 'text-gray-200 hover:text-white hover:bg-blue-900/40'
+            }`}
+          >
             Blog
           </Link>
-          <Link to="/advertise" className="block py-2 text-base font-semibold text-gray-800 hover:text-blue-900 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
-            Advertise With Us
-          </Link>
-          <Link to="/contact" className="block py-2 text-base font-semibold text-gray-800 hover:text-blue-900 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
-            Contact
+
+          <Link 
+            to="/advertise" 
+            className={`px-3 py-2 rounded-md transition-colors ${
+              location.pathname === '/advertise' ? 'text-yellow-400 bg-blue-900/60' : 'text-gray-200 hover:text-white hover:bg-blue-900/40'
+            }`}
+          >
+            Advertise
           </Link>
 
-          <div className="pt-4 flex flex-col space-y-2">
-            <a href={`tel:${contactConfig.rawPhone}`} className="w-full">
-              <Button className="w-full bg-blue-900 hover:bg-blue-800 text-white">
-                <Phone className="h-4 w-4 mr-2" />
-                Call Now: {contactConfig.phone}
-              </Button>
-            </a>
-            <Button variant="yellow" className="w-full" onClick={() => { setIsMenuOpen(false); openPopup(); }}>
-              Request Exclusive Offers
+          <Link 
+            to="/contact" 
+            className={`px-3 py-2 rounded-md transition-colors ${
+              location.pathname === '/contact' ? 'text-yellow-400 bg-blue-900/60' : 'text-gray-200 hover:text-white hover:bg-blue-900/40'
+            }`}
+          >
+            Contact
+          </Link>
+        </nav>
+
+        {/* Action Button */}
+        <div className="hidden lg:flex items-center space-x-3">
+          <Button
+            variant="yellow"
+            size="sm"
+            onClick={() => openPopup()}
+            className="font-bold shadow-md hover:bg-yellow-400 text-blue-950"
+          >
+            <WhatsAppIcon className="h-4 w-4 mr-1.5 text-emerald-800" />
+            Enquire Now
+          </Button>
+        </div>
+
+        {/* Mobile Hamburger Button */}
+        <div className="lg:hidden flex items-center space-x-2">
+          <a
+            href={contactConfig.whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-emerald-600 p-2 rounded-lg text-white"
+            aria-label="Chat on WhatsApp"
+          >
+            <WhatsAppIcon className="h-5 w-5" />
+          </a>
+
+          <a
+            href={contactConfig.telLink}
+            className="bg-blue-900 p-2 rounded-lg text-yellow-400"
+            aria-label="Call iDesign4U Properties"
+          >
+            <Phone className="h-5 w-5" />
+          </a>
+
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 rounded-lg bg-blue-900 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
+
+      </div>
+
+      {/* Mobile Drawer Menu with Accordions */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-blue-950 border-t border-blue-900 px-4 pt-2 pb-6 space-y-2 animate-in slide-in-from-top-2 duration-200">
+          
+          <Link to="/" onClick={closeMobileMenu} className="block py-2 text-base font-semibold text-white hover:text-yellow-400">
+            Home
+          </Link>
+
+          {/* Mobile Accordion: Buy Properties */}
+          <div>
+            <button
+              onClick={() => toggleAccordion('properties')}
+              className="w-full flex justify-between items-center py-2 text-base font-semibold text-white hover:text-yellow-400"
+            >
+              <span>Buy Properties</span>
+              <ChevronDown className={`h-4 w-4 transition-transform ${openAccordion === 'properties' ? 'rotate-180 text-yellow-400' : ''}`} />
+            </button>
+            {openAccordion === 'properties' && (
+              <div className="pl-4 space-y-2 py-1 text-sm text-gray-300">
+                <Link to="/properties" onClick={closeMobileMenu} className="block py-1">All Properties</Link>
+                <Link to="/properties/plots" onClick={closeMobileMenu} className="block py-1">Open Plots (HMDA/DTCP)</Link>
+                <Link to="/properties/villas" onClick={closeMobileMenu} className="block py-1">Luxury Villas</Link>
+                <Link to="/properties/apartments" onClick={closeMobileMenu} className="block py-1">Apartments (2, 3, 4 BHK)</Link>
+              </div>
+            )}
+          </div>
+
+          {/* Mobile Accordion: Projects */}
+          <div>
+            <button
+              onClick={() => toggleAccordion('projects')}
+              className="w-full flex justify-between items-center py-2 text-base font-semibold text-white hover:text-yellow-400"
+            >
+              <span>Township Projects</span>
+              <ChevronDown className={`h-4 w-4 transition-transform ${openAccordion === 'projects' ? 'rotate-180 text-yellow-400' : ''}`} />
+            </button>
+            {openAccordion === 'projects' && (
+              <div className="pl-4 space-y-2 py-1 text-sm text-gray-300">
+                <Link to="/projects" onClick={closeMobileMenu} className="block py-1 font-bold text-yellow-400">All Projects</Link>
+                <Link to="/projects/a1-green-valley" onClick={closeMobileMenu} className="block py-1">A1 Green Valley (Shankarpally)</Link>
+                <Link to="/projects/a1-royal-enclave" onClick={closeMobileMenu} className="block py-1">A1 Royal Enclave (Adibatla)</Link>
+                <Link to="/projects/a1-sunrise-heights" onClick={closeMobileMenu} className="block py-1">A1 Sunrise Heights (Kollur)</Link>
+              </div>
+            )}
+          </div>
+
+          {/* Mobile Accordion: Locations */}
+          <div>
+            <button
+              onClick={() => toggleAccordion('locations')}
+              className="w-full flex justify-between items-center py-2 text-base font-semibold text-white hover:text-yellow-400"
+            >
+              <span>Hyderabad Locations</span>
+              <ChevronDown className={`h-4 w-4 transition-transform ${openAccordion === 'locations' ? 'rotate-180 text-yellow-400' : ''}`} />
+            </button>
+            {openAccordion === 'locations' && (
+              <div className="pl-4 space-y-2 py-1 text-sm text-gray-300">
+                <Link to="/locations" onClick={closeMobileMenu} className="block py-1 font-bold text-yellow-400">All Locations</Link>
+                <Link to="/locations/kokapet" onClick={closeMobileMenu} className="block py-1">Kokapet</Link>
+                <Link to="/locations/narsingi" onClick={closeMobileMenu} className="block py-1">Narsingi</Link>
+                <Link to="/locations/tellapur" onClick={closeMobileMenu} className="block py-1">Tellapur</Link>
+                <Link to="/locations/kollur" onClick={closeMobileMenu} className="block py-1">Kollur</Link>
+                <Link to="/locations/gachibowli" onClick={closeMobileMenu} className="block py-1">Gachibowli</Link>
+              </div>
+            )}
+          </div>
+
+          <Link to="/investment" onClick={closeMobileMenu} className="block py-2 text-base font-semibold text-white hover:text-yellow-400">
+            Investment Guide
+          </Link>
+
+          <Link to="/blog" onClick={closeMobileMenu} className="block py-2 text-base font-semibold text-white hover:text-yellow-400">
+            Blog
+          </Link>
+
+          <Link to="/advertise" onClick={closeMobileMenu} className="block py-2 text-base font-semibold text-white hover:text-yellow-400">
+            Advertise With Us
+          </Link>
+
+          <Link to="/contact" onClick={closeMobileMenu} className="block py-2 text-base font-semibold text-white hover:text-yellow-400">
+            Contact Us
+          </Link>
+
+          <div className="pt-3">
+            <Button
+              variant="yellow"
+              className="w-full font-bold text-blue-950 py-3"
+              onClick={() => { closeMobileMenu(); openPopup(); }}
+            >
+              <WhatsAppIcon className="h-5 w-5 mr-2 text-emerald-800" />
+              Get Best Property Offers
             </Button>
           </div>
-        </nav>
+        </div>
       )}
+
     </header>
   );
 };

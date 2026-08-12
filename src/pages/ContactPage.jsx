@@ -3,10 +3,11 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { SEOHead } from '@/components/SEOHead';
-import { Phone, Mail, MapPin, MessageCircle, Calendar, Clock, Loader2 } from 'lucide-react';
+import { Phone, Mail, Loader2 } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon';
 import { contactConfig } from '@/config/contactConfig';
 import { submitLead, validateIndianPhone } from '@/services/leadService';
 import { toast } from 'sonner';
@@ -16,7 +17,6 @@ export const ContactPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [phoneError, setPhoneError] = useState('');
 
-  // Form 1: Contact Enquiry
   const [enquiryForm, setEnquiryForm] = useState({
     name: '',
     email: '',
@@ -26,7 +26,6 @@ export const ContactPage = () => {
     message: ''
   });
 
-  // Form 2: Site Visit Request
   const [siteVisitForm, setSiteVisitForm] = useState({
     name: '',
     phone: '',
@@ -66,7 +65,7 @@ export const ContactPage = () => {
         });
       }
     } catch (err) {
-      toast.error('Error initiating WhatsApp. Please click WhatsApp button directly.');
+      toast.error('Error initiating WhatsApp.');
     } finally {
       setIsSubmitting(false);
     }
@@ -127,45 +126,51 @@ export const ContactPage = () => {
           </p>
         </div>
 
-        {/* Contact Info Cards */}
+        {/* Contact Cards (Icon-only controls, NO visible phone or email text) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           
-          <Card className="p-6 text-center border border-gray-200 shadow-sm bg-white hover:shadow-md transition-shadow">
-            <div className="bg-blue-900 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-yellow-400">
-              <Phone className="h-6 w-6" />
-            </div>
-            <h3 className="font-bold text-gray-900 mb-1 text-base">Call Support</h3>
-            <p className="text-xs text-gray-500 mb-3">{contactConfig.workingHours}</p>
-            <a href={`tel:${contactConfig.rawPhone}`} className="text-blue-900 font-extrabold text-lg hover:underline block">
-              {contactConfig.phone}
+          <Card className="p-6 text-center border border-gray-200 shadow-sm bg-white hover:shadow-md transition-shadow flex flex-col justify-between items-center space-y-3">
+            <a
+              href={contactConfig.telLink}
+              className="bg-yellow-500 text-blue-950 p-4 rounded-2xl hover:scale-105 transition-transform shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              aria-label="Call iDesign4U Properties"
+            >
+              <Phone className="h-7 w-7" />
             </a>
+            <div>
+              <h3 className="font-bold text-gray-900 text-base">Call Support</h3>
+              <p className="text-xs text-gray-500 mt-1">{contactConfig.workingHours}</p>
+            </div>
           </Card>
 
-          <Card className="p-6 text-center border border-gray-200 shadow-sm bg-white hover:shadow-md transition-shadow">
-            <div className="bg-emerald-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-white">
-              <MessageCircle className="h-6 w-6" />
-            </div>
-            <h3 className="font-bold text-gray-900 mb-1 text-base">WhatsApp Support</h3>
-            <p className="text-xs text-gray-500 mb-3">Instant Property Details &amp; Maps</p>
+          <Card className="p-6 text-center border border-gray-200 shadow-sm bg-white hover:shadow-md transition-shadow flex flex-col justify-between items-center space-y-3">
             <a
-              href={`https://wa.me/${contactConfig.rawWhatsapp}`}
+              href={contactConfig.whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-emerald-700 font-extrabold text-lg hover:underline block"
+              className="bg-emerald-600 text-white p-4 rounded-2xl hover:scale-105 transition-transform shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              aria-label="Chat on WhatsApp"
             >
-              {contactConfig.whatsapp}
+              <WhatsAppIcon className="h-7 w-7" />
             </a>
+            <div>
+              <h3 className="font-bold text-gray-900 text-base">WhatsApp Support</h3>
+              <p className="text-xs text-gray-500 mt-1">Instant Property Layouts &amp; Maps</p>
+            </div>
           </Card>
 
-          <Card className="p-6 text-center border border-gray-200 shadow-sm bg-white hover:shadow-md transition-shadow">
-            <div className="bg-blue-900 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-yellow-400">
-              <Mail className="h-6 w-6" />
-            </div>
-            <h3 className="font-bold text-gray-900 mb-1 text-base">Email Enquiry</h3>
-            <p className="text-xs text-gray-500 mb-3">Send project documents &amp; queries</p>
-            <a href={`mailto:${contactConfig.email}`} className="text-blue-900 font-extrabold text-base hover:underline block">
-              {contactConfig.email}
+          <Card className="p-6 text-center border border-gray-200 shadow-sm bg-white hover:shadow-md transition-shadow flex flex-col justify-between items-center space-y-3">
+            <a
+              href={contactConfig.mailtoLink}
+              className="bg-blue-950 text-white p-4 rounded-2xl hover:scale-105 transition-transform shadow-md focus:outline-none focus:ring-2 focus:ring-blue-800"
+              aria-label="Email iDesign4U Properties"
+            >
+              <Mail className="h-7 w-7" />
             </a>
+            <div>
+              <h3 className="font-bold text-gray-900 text-base">Email Enquiry</h3>
+              <p className="text-xs text-gray-500 mt-1">Legal Documents &amp; Assistance</p>
+            </div>
           </Card>
 
         </div>
@@ -262,7 +267,7 @@ export const ContactPage = () => {
                     </>
                   ) : (
                     <>
-                      <MessageCircle className="h-4 w-4 mr-2" />
+                      <WhatsAppIcon className="h-5 w-5 mr-2" />
                       Send Enquiry on WhatsApp
                     </>
                   )}
@@ -347,7 +352,7 @@ export const ContactPage = () => {
                     </>
                   ) : (
                     <>
-                      <MessageCircle className="h-4 w-4 mr-2" />
+                      <WhatsAppIcon className="h-5 w-5 mr-2" />
                       Confirm Site Visit on WhatsApp
                     </>
                   )}

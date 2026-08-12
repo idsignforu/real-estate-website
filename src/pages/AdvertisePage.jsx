@@ -3,9 +3,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { SEOHead } from '@/components/SEOHead';
-import { Megaphone, Building, ShieldCheck, MessageCircle, Loader2 } from 'lucide-react';
+import { Megaphone, ShieldCheck, Loader2, Phone, Mail } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon';
 import { contactConfig } from '@/config/contactConfig';
 import { submitLead, validateIndianPhone } from '@/services/leadService';
 import { toast } from 'sonner';
@@ -105,11 +106,37 @@ export const AdvertisePage = () => {
               </ul>
             </Card>
 
-            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center space-y-2">
+            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center space-y-3">
               <h4 className="font-bold text-gray-900 text-sm">Prefer Direct Contact?</h4>
               <p className="text-xs text-gray-600">Reach out directly to our marketing team:</p>
-              <p className="text-base font-extrabold text-blue-900">{contactConfig.phone}</p>
-              <p className="text-xs text-gray-500">{contactConfig.email}</p>
+              
+              <div className="flex justify-center space-x-3 pt-1">
+                <a
+                  href={contactConfig.whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white p-2.5 rounded-xl shadow transition-transform hover:scale-105"
+                  aria-label="Chat on WhatsApp"
+                >
+                  <WhatsAppIcon className="h-5 w-5" />
+                </a>
+
+                <a
+                  href={contactConfig.telLink}
+                  className="bg-yellow-500 hover:bg-yellow-400 text-blue-950 p-2.5 rounded-xl shadow transition-transform hover:scale-105"
+                  aria-label="Call iDesign4U Properties"
+                >
+                  <Phone className="h-5 w-5" />
+                </a>
+
+                <a
+                  href={contactConfig.mailtoLink}
+                  className="bg-blue-950 hover:bg-blue-900 text-white p-2.5 rounded-xl shadow transition-transform hover:scale-105"
+                  aria-label="Email iDesign4U Properties"
+                >
+                  <Mail className="h-5 w-5" />
+                </a>
+              </div>
             </div>
           </div>
 
@@ -205,7 +232,7 @@ export const AdvertisePage = () => {
                     </>
                   ) : (
                     <>
-                      <MessageCircle className="h-4 w-4 mr-2" />
+                      <WhatsAppIcon className="h-5 w-5 mr-2" />
                       Submit &amp; Open WhatsApp
                     </>
                   )}

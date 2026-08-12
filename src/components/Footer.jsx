@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Building2, Phone, Mail, MapPin, ExternalLink } from 'lucide-react';
+import { Building2, Phone, Mail, MapPin } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon';
 import { contactConfig } from '@/config/contactConfig';
 
 export const Footer = () => {
@@ -24,7 +25,7 @@ export const Footer = () => {
               {contactConfig.description}
             </p>
             <div className="pt-2 text-xs text-gray-400">
-              <p>HMDA Approval Layouts</p>
+              <p>HMDA Approved Layouts</p>
               <p>DTCP Approved Plots &amp; Villas</p>
             </div>
           </div>
@@ -34,42 +35,42 @@ export const Footer = () => {
             <h4 className="text-lg font-semibold mb-4 text-white border-b border-blue-800/60 pb-2">Navigation</h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link to="/" className="text-gray-300 hover:text-yellow-400 transition-colors flex items-center">
+                <Link to="/" className="text-gray-300 hover:text-yellow-400 transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/properties" className="text-gray-300 hover:text-yellow-400 transition-colors flex items-center">
+                <Link to="/properties" className="text-gray-300 hover:text-yellow-400 transition-colors">
                   All Properties
                 </Link>
               </li>
               <li>
-                <Link to="/projects" className="text-gray-300 hover:text-yellow-400 transition-colors flex items-center">
+                <Link to="/projects" className="text-gray-300 hover:text-yellow-400 transition-colors">
                   Township Projects
                 </Link>
               </li>
               <li>
-                <Link to="/locations" className="text-gray-300 hover:text-yellow-400 transition-colors flex items-center">
+                <Link to="/locations" className="text-gray-300 hover:text-yellow-400 transition-colors">
                   Hyderabad Locations
                 </Link>
               </li>
               <li>
-                <Link to="/investment" className="text-gray-300 hover:text-yellow-400 transition-colors flex items-center">
+                <Link to="/investment" className="text-gray-300 hover:text-yellow-400 transition-colors">
                   Investment Guide
                 </Link>
               </li>
               <li>
-                <Link to="/blog" className="text-gray-300 hover:text-yellow-400 transition-colors flex items-center">
+                <Link to="/blog" className="text-gray-300 hover:text-yellow-400 transition-colors">
                   Real Estate Blog
                 </Link>
               </li>
               <li>
-                <Link to="/advertise" className="text-gray-300 hover:text-yellow-400 transition-colors flex items-center">
+                <Link to="/advertise" className="text-gray-300 hover:text-yellow-400 transition-colors">
                   Advertise With Us
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-yellow-400 transition-colors flex items-center">
+                <Link to="/contact" className="text-gray-300 hover:text-yellow-400 transition-colors">
                   Contact Us
                 </Link>
               </li>
@@ -108,27 +109,43 @@ export const Footer = () => {
             </div>
           </div>
 
-          {/* Contact Information */}
+          {/* Contact Controls (Icon-only, NO visible phone or email text) */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white border-b border-blue-800/60 pb-2">Get in Touch</h4>
-            <ul className="space-y-3.5 text-sm text-gray-300">
-              <li className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 text-yellow-400 shrink-0 mt-0.5" />
-                <span className="text-xs leading-relaxed">{contactConfig.address}</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-yellow-400 shrink-0" />
-                <a href={`tel:${contactConfig.rawPhone}`} className="hover:text-yellow-400 transition-colors">
-                  {contactConfig.phone}
-                </a>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-yellow-400 shrink-0" />
-                <a href={`mailto:${contactConfig.email}`} className="hover:text-yellow-400 transition-colors">
-                  {contactConfig.email}
-                </a>
-              </li>
-            </ul>
+            <h4 className="text-lg font-semibold mb-4 text-white border-b border-blue-800/60 pb-2">Connect With Us</h4>
+            <p className="text-xs text-gray-300 leading-relaxed mb-4">
+              Tap any icon below to initiate direct calls, WhatsApp property enquiries, or email support.
+            </p>
+
+            <div className="flex items-center space-x-3 pt-1">
+              {/* WhatsApp Icon */}
+              <a
+                href={contactConfig.whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-emerald-600 hover:bg-emerald-500 text-white p-3 rounded-xl transition-all shadow-md hover:scale-105"
+                aria-label="Chat on WhatsApp"
+              >
+                <WhatsAppIcon className="h-6 w-6" />
+              </a>
+
+              {/* Phone Icon */}
+              <a
+                href={contactConfig.telLink}
+                className="bg-yellow-500 hover:bg-yellow-400 text-blue-950 p-3 rounded-xl transition-all shadow-md hover:scale-105"
+                aria-label="Call iDesign4U Properties"
+              >
+                <Phone className="h-6 w-6" />
+              </a>
+
+              {/* Email Icon */}
+              <a
+                href={contactConfig.mailtoLink}
+                className="bg-blue-900 hover:bg-blue-800 text-white p-3 rounded-xl transition-all shadow-md hover:scale-105 border border-blue-800"
+                aria-label="Email iDesign4U Properties"
+              >
+                <Mail className="h-6 w-6" />
+              </a>
+            </div>
           </div>
 
         </div>

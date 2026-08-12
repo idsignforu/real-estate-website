@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShieldCheck, Award, TrendingUp, CheckCircle, ArrowRight, Building, Building2, Home, MapPin, Phone, Star } from 'lucide-react';
+import { ShieldCheck, TrendingUp, CheckCircle, ArrowRight, Building, Building2, Home, MapPin, Phone, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { SEOHead } from '@/components/SEOHead';
@@ -8,6 +8,7 @@ import { PropertyCard } from '@/components/PropertyCard';
 import { ProjectCard } from '@/components/ProjectCard';
 import { LocationCard } from '@/components/LocationCard';
 import { EMICalculator } from '@/components/EMICalculator';
+import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon';
 import { propertiesData } from '@/data/propertiesData';
 import { projectsData } from '@/data/projectsData';
 import { locationsData } from '@/data/locationsData';
@@ -32,7 +33,7 @@ export const HomePage = () => {
       <section 
         className="relative h-[85vh] min-h-[550px] max-h-[750px] bg-cover bg-center flex items-center justify-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('https://images.unsplash.com/photo-1636970333550-2ce3aeda6754?crop=entropy&cs=srgb&fm=jpg&q=85')`
+          backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.78)), url('https://images.unsplash.com/photo-1636970333550-2ce3aeda6754?crop=entropy&cs=srgb&fm=jpg&q=85')`
         }}
       >
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white space-y-6">
@@ -51,7 +52,7 @@ export const HomePage = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Link to="/properties">
-              <Button size="lg" variant="yellow" className="w-full sm:w-auto text-base px-8 py-3 font-bold">
+              <Button size="lg" variant="yellow" className="w-full sm:w-auto text-base px-8 py-3.5 font-bold text-blue-950">
                 Explore Properties <ArrowRight className="h-5 w-5 ml-2" />
               </Button>
             </Link>
@@ -59,9 +60,10 @@ export const HomePage = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              className="w-full sm:w-auto border-2 border-white text-white hover:bg-white hover:text-blue-950 font-bold text-base px-8 py-3"
+              className="w-full sm:w-auto border-2 border-white text-white hover:bg-white hover:text-blue-950 font-bold text-base px-8 py-3.5"
               onClick={() => openPopup()}
             >
+              <WhatsAppIcon className="h-5 w-5 mr-2 text-emerald-400" />
               Get Exclusive Offers
             </Button>
           </div>
@@ -90,9 +92,9 @@ export const HomePage = () => {
         </div>
       </section>
 
-      {/* Featured Properties Section */}
-      <section className="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+      {/* Featured Properties Section (Compact 2-col on mobile) */}
+      <section className="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
             <Badge variant="yellow" className="mb-2">Featured Listings</Badge>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-blue-950">
@@ -103,13 +105,13 @@ export const HomePage = () => {
             </p>
           </div>
           <Link to="/properties">
-            <Button variant="outline" className="text-blue-900 border-blue-900 hover:bg-blue-50 font-semibold">
+            <Button variant="outline" className="text-blue-950 border-blue-950 hover:bg-blue-50 font-semibold text-xs sm:text-sm">
               View All Properties ({propertiesData.length}) <ArrowRight className="h-4 w-4 ml-2" />
             </Button>
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
           {featuredProperties.map((property) => (
             <PropertyCard key={property.id} property={property} />
           ))}
@@ -117,7 +119,7 @@ export const HomePage = () => {
       </section>
 
       {/* Property Categories Shortcut Bar */}
-      <section className="bg-blue-900 text-white py-14">
+      <section className="bg-blue-950 text-white py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
             <h2 className="text-2xl sm:text-3xl font-bold mb-2">Browse Properties by Type</h2>
@@ -147,10 +149,10 @@ export const HomePage = () => {
       </section>
 
       {/* Featured Projects Section */}
-      <section className="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+      <section className="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
-            <Badge variant="outline" className="mb-2 text-blue-900 border-blue-900">Township Projects</Badge>
+            <Badge variant="outline" className="mb-2 text-blue-950 border-blue-950">Township Projects</Badge>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-blue-950">
               Ongoing Mega Developments
             </h2>
@@ -159,13 +161,13 @@ export const HomePage = () => {
             </p>
           </div>
           <Link to="/projects">
-            <Button variant="outline" className="text-blue-900 border-blue-900 hover:bg-blue-50 font-semibold">
+            <Button variant="outline" className="text-blue-950 border-blue-950 hover:bg-blue-50 font-semibold text-xs sm:text-sm">
               Explore All Projects <ArrowRight className="h-4 w-4 ml-2" />
             </Button>
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {featuredProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
@@ -173,9 +175,9 @@ export const HomePage = () => {
       </section>
 
       {/* Locations Showcase */}
-      <section className="bg-slate-100 py-16 sm:py-20">
+      <section className="bg-slate-100 py-12 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="text-center max-w-3xl mx-auto mb-10">
             <Badge variant="yellow" className="mb-2">Prime Hubs</Badge>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-blue-950 mb-3">
               Top Real Estate Locations in Hyderabad
@@ -185,7 +187,7 @@ export const HomePage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {topLocations.map((loc) => (
               <LocationCard key={loc.slug} location={loc} />
             ))}
@@ -193,7 +195,7 @@ export const HomePage = () => {
 
           <div className="text-center mt-10">
             <Link to="/locations">
-              <Button size="lg" className="bg-blue-900 hover:bg-blue-800 text-white font-semibold">
+              <Button size="lg" className="bg-blue-950 hover:bg-blue-900 text-white font-semibold">
                 Explore All Locations Directory <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
             </Link>
@@ -202,7 +204,7 @@ export const HomePage = () => {
       </section>
 
       {/* Investment & EMI Calculator Section */}
-      <section className="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           <div className="lg:col-span-5 space-y-6">
@@ -228,7 +230,7 @@ export const HomePage = () => {
 
             <div className="pt-2">
               <Link to="/investment">
-                <Button className="bg-blue-900 hover:bg-blue-800 text-white font-semibold">
+                <Button className="bg-blue-950 hover:bg-blue-900 text-white font-semibold">
                   Read Investment Guide <ArrowRight className="h-4 w-4 ml-2" />
                 </Button>
               </Link>
@@ -254,7 +256,7 @@ export const HomePage = () => {
             {testimonialsData.map((t) => (
               <div key={t.id} className="bg-gray-50 p-6 rounded-xl border border-gray-200 space-y-4 shadow-sm">
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 rounded-full bg-blue-900 text-yellow-400 font-bold flex items-center justify-center text-sm">
+                  <div className="w-10 h-10 rounded-full bg-blue-950 text-yellow-400 font-bold flex items-center justify-center text-sm">
                     {t.avatar}
                   </div>
                   <div>
@@ -286,12 +288,13 @@ export const HomePage = () => {
             Contact our legal and site assistance team today for free site visits, layout plans, and document verification.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2">
-            <Button variant="yellow" size="lg" className="font-bold text-base px-8" onClick={() => openPopup()}>
+            <Button variant="yellow" size="lg" className="font-bold text-base px-8 text-blue-950" onClick={() => openPopup()}>
+              <WhatsAppIcon className="h-5 w-5 mr-2 text-emerald-800" />
               Schedule Free Site Visit
             </Button>
-            <a href={`tel:${contactConfig.rawPhone}`}>
+            <a href={contactConfig.telLink}>
               <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-blue-950 font-bold text-base px-8 w-full sm:w-auto">
-                <Phone className="h-4 w-4 mr-2" /> Call {contactConfig.phone}
+                <Phone className="h-4 w-4 mr-2" /> Call Support
               </Button>
             </a>
           </div>

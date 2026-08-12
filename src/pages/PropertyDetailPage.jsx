@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { 
-  MapPin, ShieldCheck, CheckCircle2, Phone, MessageCircle, 
-  Building, ChevronRight, ArrowLeft, Share2, Calendar 
+  MapPin, ShieldCheck, CheckCircle2, Phone, 
+  ChevronRight, ArrowLeft, Share2 
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { SEOHead } from '@/components/SEOHead';
 import { EMICalculator } from '@/components/EMICalculator';
 import { PropertyCard } from '@/components/PropertyCard';
+import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon';
 import { propertiesData } from '@/data/propertiesData';
 import { contactConfig } from '@/config/contactConfig';
 import { usePopup } from '@/context/PopupContext';
@@ -19,7 +20,6 @@ export const PropertyDetailPage = () => {
   const { id } = useParams();
   const { openPopup } = usePopup();
 
-  // Find by ID or slug
   const property = propertiesData.find(p => p.id === id || p.slug === id);
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -31,7 +31,7 @@ export const PropertyDetailPage = () => {
           <h2 className="text-2xl font-bold text-gray-900">Property Not Found</h2>
           <p className="text-gray-600 text-sm">The property you are looking for may have been updated or removed.</p>
           <Link to="/properties">
-            <Button className="bg-blue-900 hover:bg-blue-800 text-white">
+            <Button className="bg-blue-950 text-white">
               <ArrowLeft className="h-4 w-4 mr-2" /> Back to Properties
             </Button>
           </Link>
@@ -69,9 +69,9 @@ export const PropertyDetailPage = () => {
         
         {/* Breadcrumb Navigation */}
         <div className="flex items-center space-x-2 text-xs sm:text-sm text-gray-500 mb-6 flex-wrap">
-          <Link to="/" className="hover:text-blue-900">Home</Link>
+          <Link to="/" className="hover:text-blue-950">Home</Link>
           <ChevronRight className="h-3.5 w-3.5" />
-          <Link to="/properties" className="hover:text-blue-900">Properties</Link>
+          <Link to="/properties" className="hover:text-blue-950">Properties</Link>
           <ChevronRight className="h-3.5 w-3.5" />
           <span className="text-gray-900 font-medium truncate max-w-[200px] sm:max-w-none">{property.name}</span>
         </div>
@@ -81,7 +81,7 @@ export const PropertyDetailPage = () => {
           <div>
             <div className="flex items-center space-x-2 mb-2 flex-wrap gap-y-2">
               <Badge variant="yellow">{property.approval} Approved</Badge>
-              <Badge variant="default" className="bg-blue-900 text-white">{property.type}</Badge>
+              <Badge variant="default" className="bg-blue-950 text-white">{property.type}</Badge>
               {property.status && <Badge variant="outline">{property.status}</Badge>}
             </div>
             <h1 className="text-2xl sm:text-4xl font-extrabold text-blue-950">{property.name}</h1>
@@ -104,7 +104,6 @@ export const PropertyDetailPage = () => {
 
         {/* Image Gallery */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-10">
-          {/* Main Hero Image */}
           <div className="lg:col-span-8 bg-gray-900 rounded-xl overflow-hidden aspect-[16/10] shadow-md relative">
             <img
               src={galleryImages[activeImageIndex]}
@@ -113,7 +112,6 @@ export const PropertyDetailPage = () => {
             />
           </div>
 
-          {/* Thumbnails Column & Quick Info */}
           <div className="lg:col-span-4 flex flex-col justify-between space-y-4">
             <div className="space-y-2">
               <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider">Photo Gallery ({galleryImages.length})</h4>
@@ -133,33 +131,33 @@ export const PropertyDetailPage = () => {
             </div>
 
             {/* Quick Action Box */}
-            <Card className="bg-blue-950 text-white border-none p-5 shadow-lg">
-              <h4 className="text-lg font-bold text-yellow-400 mb-2">Interested in this Property?</h4>
-              <p className="text-xs text-gray-300 mb-4">Get instant legal layout documents, price breakdown &amp; book a free site visit.</p>
+            <Card className="bg-blue-950 text-white border-none p-5 shadow-lg space-y-3">
+              <h4 className="text-lg font-bold text-yellow-400">Interested in this Property?</h4>
+              <p className="text-xs text-gray-300">Get instant legal layout documents, price breakdown &amp; book a free site visit.</p>
               
-              <div className="space-y-2.5">
+              <div className="space-y-2.5 pt-1">
                 <Button 
                   variant="yellow" 
-                  className="w-full font-bold"
+                  className="w-full font-bold text-blue-950"
                   onClick={() => openPopup({ propertyType: property.type, location: property.location })}
                 >
                   Request Callback &amp; Details
                 </Button>
                 
-                <a href={`tel:${contactConfig.rawPhone}`} className="block">
-                  <Button variant="outline" className="w-full border-white text-white hover:bg-white hover:text-blue-950 font-semibold">
-                    <Phone className="h-4 w-4 mr-2" /> Call {contactConfig.phone}
-                  </Button>
-                </a>
-
                 <a 
-                  href={`https://wa.me/${contactConfig.rawWhatsapp}?text=Hi%2C%20I%20am%20interested%20in%20${encodeURIComponent(property.name)}%20in%20${encodeURIComponent(property.location)}.`} 
+                  href={contactConfig.whatsappLink}
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="block"
                 >
                   <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold">
-                    <MessageCircle className="h-4 w-4 mr-2" /> Chat on WhatsApp
+                    <WhatsAppIcon className="h-4 w-4 mr-2" /> Chat on WhatsApp
+                  </Button>
+                </a>
+
+                <a href={contactConfig.telLink} className="block">
+                  <Button variant="outline" className="w-full border-white text-white hover:bg-white hover:text-blue-950 font-semibold">
+                    <Phone className="h-4 w-4 mr-2" /> Call for Assistance
                   </Button>
                 </a>
               </div>
@@ -171,15 +169,12 @@ export const PropertyDetailPage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
           
           <div className="lg:col-span-8 space-y-8">
-            
-            {/* Property Overview */}
             <div className="bg-white p-6 sm:p-8 rounded-xl border border-gray-200 shadow-sm space-y-4">
               <h3 className="text-xl font-bold text-blue-950 border-b pb-3">Property Overview</h3>
               <p className="text-sm text-gray-700 leading-relaxed">
                 {property.description}
               </p>
 
-              {/* Spec Matrix Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 text-xs sm:text-sm">
                 {property.plotSize && (
                   <div className="bg-slate-50 p-3 rounded-lg border border-slate-100">
@@ -218,7 +213,6 @@ export const PropertyDetailPage = () => {
               </div>
             </div>
 
-            {/* Amenities Checklist */}
             {property.amenities && property.amenities.length > 0 && (
               <div className="bg-white p-6 sm:p-8 rounded-xl border border-gray-200 shadow-sm space-y-4">
                 <h3 className="text-xl font-bold text-blue-950 border-b pb-3">Project Amenities &amp; Features</h3>
@@ -233,16 +227,13 @@ export const PropertyDetailPage = () => {
               </div>
             )}
 
-            {/* EMI Calculator */}
             <div>
               <EMICalculator />
             </div>
-
           </div>
 
-          {/* Location & Map Sidebar */}
           <div className="lg:col-span-4 space-y-6">
-            <Card className="border border-gray-200 shadow-sm p-5 space-y-4">
+            <Card className="border border-gray-200 shadow-sm p-5 space-y-4 bg-white">
               <h4 className="font-bold text-blue-950 text-base flex items-center">
                 <MapPin className="h-4 w-4 mr-2 text-red-500" /> Location Map
               </h4>
@@ -268,18 +259,17 @@ export const PropertyDetailPage = () => {
                 <ShieldCheck className="h-5 w-5 mr-2 text-blue-900" /> Verified Clear Titles
               </h4>
               <p className="text-xs text-gray-700 leading-relaxed">
-                All property title documents are legally vetted by senior High Court advocates. Spot registration &amp; bank loan assistance provided.
+                All property title documents are legally vetted by senior advocates. Spot registration &amp; bank loan assistance provided.
               </p>
             </Card>
           </div>
 
         </div>
 
-        {/* Related Properties */}
         {relatedProperties.length > 0 && (
           <div className="border-t pt-12">
             <h3 className="text-2xl font-extrabold text-blue-950 mb-6">Similar Properties in {property.location}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6">
               {relatedProperties.map(rel => (
                 <PropertyCard key={rel.id} property={rel} />
               ))}

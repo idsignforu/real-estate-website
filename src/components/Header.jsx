@@ -25,7 +25,18 @@ export const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40 bg-blue-950 text-white shadow-md border-b border-blue-900">
-      {/* Main Navigation Bar (First & Only Header Element) */}
+      
+      {/* Top Slim Scrolling DEMO Announcement Ticker */}
+      <div className="bg-blue-900/40 backdrop-blur-sm border-b border-blue-800/40 text-yellow-300/90 text-[11px] font-medium py-1 overflow-hidden relative z-50 select-none">
+        <div className="animate-demo-marquee flex shrink-0">
+          <span className="px-4">Demo Real Estate Website • Sample Property Listings • Demo Enquiry &amp; WhatsApp Integration</span>
+          <span className="px-4">Demo Real Estate Website • Sample Property Listings • Demo Enquiry &amp; WhatsApp Integration</span>
+          <span className="px-4">Demo Real Estate Website • Sample Property Listings • Demo Enquiry &amp; WhatsApp Integration</span>
+          <span className="px-4">Demo Real Estate Website • Sample Property Listings • Demo Enquiry &amp; WhatsApp Integration</span>
+        </div>
+      </div>
+
+      {/* Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
         
         {/* Brand Logo */}

@@ -56,3 +56,19 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #64748b;
 }
+
+/* Continuous Right-to-Left Ticker Animation */
+@keyframes demoMarquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-demo-marquee {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: demoMarquee 22s linear infinite;
+}
+
+.animate-demo-marquee:hover {
+  animation-play-state: paused;
+}

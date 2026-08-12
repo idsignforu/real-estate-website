@@ -26,7 +26,7 @@ export const HomePage = () => {
     <div className="min-h-screen bg-blue-950 pt-[78px] sm:pt-[88px]">
       <SEOHead
         title="HMDA & DTCP Approved Plots, Villas & Flats in Hyderabad"
-        description="Invest in legally verified HMDA & DTCP approved open plots, villas and flats in Shankarpally, Adibatla, Kokapet, and Financial District Hyderabad with iDesign4U Properties."
+        description="Invest in legally verified HMDA & DTCP approved open plots, villas and flats in Shankarpally, Adibatla, Kokapet, and Financial District Hyderabad with PropertyForHappy."
       />
 
       {/* Hero Section - Starts IMMEDIATELY below Header/Ticker with 0 White Gap */}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
-  Building2, Phone, Menu, X, ChevronDown 
+  Phone, Menu, X, ChevronDown 
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon';
@@ -29,10 +29,10 @@ export const Header = () => {
       {/* Top Slim Scrolling DEMO Announcement Ticker */}
       <div className="bg-blue-900/40 backdrop-blur-sm border-b border-blue-800/40 text-yellow-300/90 text-[11px] font-medium py-1 overflow-hidden relative z-50 select-none">
         <div className="animate-demo-marquee flex shrink-0">
-          <span className="px-4">Demo Real Estate Website • Sample Property Listings • Demo Enquiry &amp; WhatsApp Integration</span>
-          <span className="px-4">Demo Real Estate Website • Sample Property Listings • Demo Enquiry &amp; WhatsApp Integration</span>
-          <span className="px-4">Demo Real Estate Website • Sample Property Listings • Demo Enquiry &amp; WhatsApp Integration</span>
-          <span className="px-4">Demo Real Estate Website • Sample Property Listings • Demo Enquiry &amp; WhatsApp Integration</span>
+          <span className="px-4">PropertyForHappy • Demo Real Estate Website • Sample Property Listings • Demo Enquiry &amp; WhatsApp Integration</span>
+          <span className="px-4">PropertyForHappy • Demo Real Estate Website • Sample Property Listings • Demo Enquiry &amp; WhatsApp Integration</span>
+          <span className="px-4">PropertyForHappy • Demo Real Estate Website • Sample Property Listings • Demo Enquiry &amp; WhatsApp Integration</span>
+          <span className="px-4">PropertyForHappy • Demo Real Estate Website • Sample Property Listings • Demo Enquiry &amp; WhatsApp Integration</span>
         </div>
       </div>
 
@@ -40,24 +40,19 @@ export const Header = () => {
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
         
         {/* Brand Logo */}
-        <Link to="/" onClick={closeMobileMenu} className="flex items-center space-x-2 shrink-0">
-          <div className="bg-yellow-500 text-blue-950 p-1.5 sm:p-2 rounded-lg font-bold flex items-center justify-center shrink-0">
-            <Building2 className="h-4 w-4 sm:h-5 sm:w-5" />
-          </div>
-          <div>
-            {/* Desktop Brand Title & Tagline */}
-            <span className="hidden sm:block text-xl font-extrabold tracking-tight text-white leading-none">
-              {contactConfig.companyName}
-            </span>
-            <span className="hidden sm:block text-[10px] text-yellow-400 font-semibold uppercase tracking-wider">
-              {contactConfig.tagline}
-            </span>
-
-            {/* Mobile Brand Title (Short & Compact) */}
-            <span className="sm:hidden text-base font-extrabold tracking-tight text-white leading-none">
-              ID4U Properties
-            </span>
-          </div>
+        <Link to="/" onClick={closeMobileMenu} className="flex items-center shrink-0">
+          {/* Desktop logo — full size */}
+          <img
+            src="/propertyforhappy-logo.png"
+            alt="PropertyForHappy"
+            className="hidden sm:block h-10 w-auto object-contain"
+          />
+          {/* Mobile logo — scaled down, max width controlled to leave room for icons */}
+          <img
+            src="/propertyforhappy-logo.png"
+            alt="PropertyForHappy"
+            className="sm:hidden h-8 w-auto max-w-[160px] object-contain"
+          />
         </Link>
 
         {/* Desktop Navigation Links */}
@@ -214,7 +209,7 @@ export const Header = () => {
           <a
             href={contactConfig.telLink}
             className="bg-blue-900 p-1.5 rounded-lg text-yellow-400"
-            aria-label="Call iDesign4U Properties"
+            aria-label="Call PropertyForHappy"
           >
             <Phone className="h-4 w-4" />
           </a>

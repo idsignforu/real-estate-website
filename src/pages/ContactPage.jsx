@@ -110,8 +110,8 @@ export const ContactPage = () => {
   return (
     <div className="min-h-screen bg-gray-50 pt-24 pb-16">
       <SEOHead
-        title="Contact iDesign4U Properties | Real Estate Support & Site Visit Booking"
-        description="Get in touch with iDesign4U Properties for HMDA & DTCP property enquiries, legal verification, and free site visits across Hyderabad."
+        title="Contact PropertyForHappy | Real Estate Support & Site Visit Booking"
+        description="Get in touch with PropertyForHappy for HMDA & DTCP property enquiries, legal verification, and free site visits across Hyderabad."
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -133,7 +133,7 @@ export const ContactPage = () => {
             <a
               href={contactConfig.telLink}
               className="bg-yellow-500 text-blue-950 p-2 sm:p-4 rounded-xl sm:rounded-2xl hover:scale-105 transition-transform shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
-              aria-label="Call iDesign4U Properties"
+              aria-label="Call PropertyForHappy"
             >
               <Phone className="h-4 w-4 sm:h-7 sm:w-7" />
             </a>
@@ -163,7 +163,7 @@ export const ContactPage = () => {
             <a
               href={contactConfig.mailtoLink}
               className="bg-blue-950 text-white p-2 sm:p-4 rounded-xl sm:rounded-2xl hover:scale-105 transition-transform shadow-md focus:outline-none focus:ring-2 focus:ring-blue-800"
-              aria-label="Email iDesign4U Properties"
+              aria-label="Email PropertyForHappy"
             >
               <Mail className="h-4 w-4 sm:h-7 sm:w-7" />
             </a>

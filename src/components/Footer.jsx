@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Building2, Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail } from 'lucide-react';
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon';
 import { contactConfig } from '@/config/contactConfig';
 
@@ -10,17 +10,18 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           
-          {/* Brand Info */}
+          {/* Brand Info with Logo */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-3">
-              <div className="bg-yellow-500 p-2 rounded-lg">
-                <Building2 className="h-6 w-6 text-blue-950" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-white">{contactConfig.companyName}</h3>
-                <p className="text-xs text-yellow-400 font-medium">{contactConfig.tagline}</p>
-              </div>
+            <div>
+              <img
+                src="/propertyforhappy-logo.png"
+                alt="PropertyForHappy"
+                className="h-14 w-auto object-contain invert brightness-200 opacity-90"
+              />
             </div>
+            <p className="text-xs text-yellow-400 font-semibold tracking-widest uppercase mt-1">
+              {contactConfig.tagline}
+            </p>
             <p className="text-sm text-gray-300 leading-relaxed">
               {contactConfig.description}
             </p>
@@ -132,7 +133,7 @@ export const Footer = () => {
               <a
                 href={contactConfig.telLink}
                 className="bg-yellow-500 hover:bg-yellow-400 text-blue-950 p-3 rounded-xl transition-all shadow-md hover:scale-105"
-                aria-label="Call iDesign4U Properties"
+                aria-label="Call PropertyForHappy"
               >
                 <Phone className="h-6 w-6" />
               </a>
@@ -141,7 +142,7 @@ export const Footer = () => {
               <a
                 href={contactConfig.mailtoLink}
                 className="bg-blue-900 hover:bg-blue-800 text-white p-3 rounded-xl transition-all shadow-md hover:scale-105 border border-blue-800"
-                aria-label="Email iDesign4U Properties"
+                aria-label="Email PropertyForHappy"
               >
                 <Mail className="h-6 w-6" />
               </a>
@@ -151,7 +152,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-blue-900 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 gap-4">
-          <p>© {new Date().getFullYear()} {contactConfig.companyName}. All Rights Reserved. Legally Verified Real Estate Properties.</p>
+          <p>© {new Date().getFullYear()} PropertyForHappy. All Rights Reserved. Legally Verified Real Estate Properties.</p>
           <div className="flex space-x-6">
             <Link to="/properties" className="hover:text-gray-200">Properties</Link>
             <Link to="/investment" className="hover:text-gray-200">Investment</Link>

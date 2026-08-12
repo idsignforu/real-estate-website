@@ -8,7 +8,7 @@ export const ProjectsPage = () => {
     <div className="min-h-screen bg-gray-50 pt-[78px] sm:pt-[88px] pb-16">
       <SEOHead
         title="Gated Township Projects in Hyderabad | HMDA & DTCP Approved"
-        description="Explore mega gated plot layouts and villa townships across Shankarpally, Adibatla, Tukkuguda and Kollur Hyderabad by iDesign4U Properties."
+        description="Explore mega gated plot layouts and villa townships across Shankarpally, Adibatla, Tukkuguda and Kollur Hyderabad by PropertyForHappy."
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

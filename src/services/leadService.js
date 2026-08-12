@@ -1,7 +1,7 @@
 import { contactConfig, openWhatsAppEnquiry } from '@/config/contactConfig';
 
 /**
- * WhatsApp Lead Submission Engine for iDesign4U Properties
+ * WhatsApp Lead Submission Engine for PropertyForHappy
  */
 export const submitLead = async (leadType, formData) => {
   // Validate Indian mobile number
@@ -63,7 +63,7 @@ export const submitLead = async (leadType, formData) => {
       "Budget": formData.budget || "Flexible"
     };
   } else if (leadType === 'advertise') {
-    title = "I am interested in advertising/listing a property or project with iDesign4U Properties.";
+    title = "I am interested in advertising/listing a property or project with PropertyForHappy.";
     fields = {
       "Name": formData.name,
       "Company": formData.company || "N/A",
@@ -87,7 +87,7 @@ export const submitLead = async (leadType, formData) => {
 
   return { 
     success: true, 
-    message: 'Opening WhatsApp to complete your enquiry with iDesign4U Properties...' 
+    message: 'Opening WhatsApp to complete your enquiry with PropertyForHappy...' 
   };
 };
 

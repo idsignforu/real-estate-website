@@ -65,7 +65,7 @@ export const AdvertisePage = () => {
     <div className="min-h-screen bg-gray-50 pt-24 pb-16">
       <SEOHead
         title="Advertise With Us - Property Listing & Developer Marketing"
-        description="Partner with iDesign4U Properties to list and market your residential plots, villas, and apartments to buyers in Hyderabad."
+        description="Partner with PropertyForHappy to list and market your residential plots, villas, and apartments to buyers in Hyderabad."
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,7 +77,7 @@ export const AdvertisePage = () => {
             <span>Developer &amp; Landowner Marketing</span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-blue-950">
-            List Your Property with iDesign4U Properties
+            List Your Property with PropertyForHappy
           </h1>
           <p className="text-sm sm:text-base text-gray-600">
             Connect your HMDA/DTCP layouts, villas, and apartment projects directly with active real estate buyers across Hyderabad.
@@ -124,7 +124,7 @@ export const AdvertisePage = () => {
                 <a
                   href={contactConfig.telLink}
                   className="bg-yellow-500 hover:bg-yellow-400 text-blue-950 p-2.5 rounded-xl shadow transition-transform hover:scale-105"
-                  aria-label="Call iDesign4U Properties"
+                  aria-label="Call PropertyForHappy"
                 >
                   <Phone className="h-5 w-5" />
                 </a>
@@ -132,7 +132,7 @@ export const AdvertisePage = () => {
                 <a
                   href={contactConfig.mailtoLink}
                   className="bg-blue-950 hover:bg-blue-900 text-white p-2.5 rounded-xl shadow transition-transform hover:scale-105"
-                  aria-label="Email iDesign4U Properties"
+                  aria-label="Email PropertyForHappy"
                 >
                   <Mail className="h-5 w-5" />
                 </a>

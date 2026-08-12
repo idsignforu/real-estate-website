@@ -4,7 +4,7 @@ export const testimonialsData = [
     name: "Rajesh Kumar",
     location: "Purchased Plot in Shankarpally",
     rating: 5,
-    comment: "iDesign4U Properties helped me invest in a verified HMDA approved plot. The entire process was transparent and hassle-free. The property has already appreciated by 20% in just one year.",
+    comment: "PropertyForHappy helped me invest in a verified HMDA approved plot. The entire process was transparent and hassle-free. The property has already appreciated by 20% in just one year.",
     avatar: "RK"
   },
   {
@@ -20,7 +20,7 @@ export const testimonialsData = [
     name: "Venkat Reddy",
     location: "Villa Owner in Adibatla",
     rating: 5,
-    comment: "Professional approach and complete transparency in dealings. iDesign4U Properties stands by their commitments. Got bank loan approval easily due to clear titles. Highly recommended!",
+    comment: "Professional approach and complete transparency in dealings. PropertyForHappy stands by their commitments. Got bank loan approval easily due to clear titles. Highly recommended!",
     avatar: "VR"
   }
 ];

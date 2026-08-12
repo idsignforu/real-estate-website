@@ -73,7 +73,7 @@ export const BlogDetailPage = () => {
 
           <div className="border-t pt-8 text-center bg-blue-50 p-6 rounded-xl space-y-3">
             <h4 className="font-bold text-blue-950 text-base">Have Questions About Property Approvals?</h4>
-            <p className="text-xs text-gray-600">Connect with iDesign4U Properties advisors for legal documentation &amp; site visit assistance.</p>
+            <p className="text-xs text-gray-600">Connect with PropertyForHappy advisors for legal documentation &amp; site visit assistance.</p>
             <Button variant="yellow" size="sm" onClick={() => openPopup()}>
               <MessageCircle className="h-4 w-4 mr-1.5" /> Enquire on WhatsApp
             </Button>

@@ -1,6 +1,6 @@
 export const contactConfig = {
-  companyName: "iDesign4U Properties",
-  tagline: "Premium Properties in Hyderabad",
+  companyName: "PropertyForHappy",
+  tagline: "HAPPY HOME, HAPPY LIFE",
   description: "Your trusted real-estate partner for discovering verified HMDA & DTCP approved plots, luxury villas, and modern apartments across Hyderabad's top growth corridors.",
   rawPhone: "919281410305",
   telLink: "tel:+919281410305",
@@ -26,12 +26,12 @@ export const openWhatsAppEnquiry = ({ title, fields = {}, defaultMessage = "" })
   let textLines = [];
 
   if (title) {
-    textLines.push(`Hello ${contactConfig.companyName},`);
+    textLines.push(`Hello PropertyForHappy,`);
     textLines.push("");
     textLines.push(title);
     textLines.push("");
   } else {
-    textLines.push(`Hello ${contactConfig.companyName},`);
+    textLines.push(`Hello PropertyForHappy,`);
     textLines.push("");
   }
 

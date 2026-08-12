@@ -1,25 +1,34 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useEffect } from 'react';
 
-export const SEOHead = ({ title, description, keywords, canonicalUrl, ogImage }) => {
+/**
+ * SEOHead — manages document <title> and meta tags via side-effects.
+ * Uses the siteName "PropertyForHappy" for og:site_name.
+ */
+export const SEOHead = ({ title, description, keywords }) => {
+  const siteName = "PropertyForHappy | Hyderabad Real Estate";
+
   useEffect(() => {
-    // Dynamic document title update
-    const siteName = "iDesign4U Properties | Hyderabad Real Estate";
-    document.title = title ? `${title} | ${siteName}` : siteName;
-
-    // Dynamic meta description
-    if (description) {
-      let metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) {
-        metaDesc.setAttribute('content', description);
+    if (title) {
+      document.title = `${title} | ${siteName}`;
+    }
+    const setMeta = (name, content, attr = 'name') => {
+      let el = document.querySelector(`meta[${attr}="${name}"]`);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attr, name);
+        document.head.appendChild(el);
       }
+      el.setAttribute('content', content);
+    };
+    if (description) setMeta('description', description);
+    if (keywords) setMeta('keywords', keywords);
+    if (title) {
+      setMeta('og:title', `${title} | ${siteName}`, 'property');
+      setMeta('og:site_name', 'PropertyForHappy', 'property');
     }
-
-    // Dynamic Open Graph title
-    let ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle && title) {
-      ogTitle.setAttribute('content', title);
-    }
-  }, [title, description, keywords, canonicalUrl, ogImage]);
+    if (description) setMeta('og:description', description, 'property');
+  }, [title, description, keywords]);
 
   return null;
 };

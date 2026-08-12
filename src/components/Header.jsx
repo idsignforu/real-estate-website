@@ -43,13 +43,13 @@ export const Header = () => {
         <Link to="/" onClick={closeMobileMenu} className="flex items-center gap-2 shrink-0 min-w-0">
           {/* Logo mark — desktop */}
           <img
-            src="/PropertyForHappy-logo.png"
+             src="/propertyforhappy-logo.png"
             alt="Property For Happy logo mark"
             className="hidden sm:block h-10 w-auto object-contain shrink-0"
           />
           {/* Logo mark — mobile (smaller) */}
           <img
-            src="/PropertyForHappy-logo.png"
+             src="/propertyforhappy-logo.png"
             alt="Property For Happy logo mark"
             className="sm:hidden h-8 w-auto object-contain shrink-0"
           />

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShieldCheck, Award, TrendingUp, CheckCircle, ArrowRight, Building, MapPin, Phone, Star } from 'lucide-react';
+import { ShieldCheck, Award, TrendingUp, CheckCircle, ArrowRight, Building, Building2, Home, MapPin, Phone, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { SEOHead } from '@/components/SEOHead';
 import { PropertyCard } from '@/components/PropertyCard';
 import { ProjectCard } from '@/components/ProjectCard';

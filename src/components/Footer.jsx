@@ -14,13 +14,13 @@ export const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <img
-                src="/propertyforhappy-logo.png"
-                alt="PropertyForHappy logo mark"
+                src="/Property For Happy-logo.png"
+                alt="Property For Happy logo mark"
                 className="h-12 w-auto object-contain shrink-0"
               />
               <div>
                 <p className="text-xl font-extrabold text-white leading-tight tracking-tight">
-                  PropertyForHappy
+                  Property For Happy
                 </p>
                 <p className="text-xs text-yellow-400 font-semibold tracking-widest uppercase mt-0.5">
                   {contactConfig.tagline}
@@ -138,7 +138,7 @@ export const Footer = () => {
               <a
                 href={contactConfig.telLink}
                 className="bg-yellow-500 hover:bg-yellow-400 text-blue-950 p-3 rounded-xl transition-all shadow-md hover:scale-105"
-                aria-label="Call PropertyForHappy"
+                aria-label="Call Property For Happy"
               >
                 <Phone className="h-6 w-6" />
               </a>
@@ -147,7 +147,7 @@ export const Footer = () => {
               <a
                 href={contactConfig.mailtoLink}
                 className="bg-blue-900 hover:bg-blue-800 text-white p-3 rounded-xl transition-all shadow-md hover:scale-105 border border-blue-800"
-                aria-label="Email PropertyForHappy"
+                aria-label="Email Property For Happy"
               >
                 <Mail className="h-6 w-6" />
               </a>
@@ -157,7 +157,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-blue-900 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 gap-4">
-          <p>© {new Date().getFullYear()} PropertyForHappy. All Rights Reserved. Legally Verified Real Estate Properties.</p>
+          <p>© {new Date().getFullYear()} Property For Happy. All Rights Reserved. Legally Verified Real Estate Properties.</p>
           <div className="flex space-x-6">
             <Link to="/properties" className="hover:text-gray-200">Properties</Link>
             <Link to="/investment" className="hover:text-gray-200">Investment</Link>
